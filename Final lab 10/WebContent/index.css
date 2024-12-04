@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(9,0,77,0.65),rgba(9,0,77,0.65)), url(img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 0px;
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start of the nav container */
+    padding: 10px;
+    gap: 20px; /* Add spacing between elements in the nav */
+}
+
+
+.logo{
+    width: 180px;
+    cursor: pointer;
+}
+
+nav ul{
+   list-style: none;
+    display: flex; /* Change for flex alignment */
+    gap: 20px; /* Space between the list items */
+    margin: 0; /* Reset margin for proper spacing */
+    padding: 0; /* Reset padding for proper spacing */
+}
+
+nav ul li{
+    display: inline-block;
+    margin: 30px 20px;
+}
+
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    background: #5e17eb;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 80px; /* Add space between the last hyperlink and button */
+}
+
+.searchform form{
+    display: flex;
+    align-items: left;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 70px;
+}
+
+.searchform form input{
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.content{
+    margin-top: 3%;
+    color: #fff;
+    max-width: 620px;
+    margin-left: 50px;
+}
+
+.content h1{
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 85px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+}
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    
+}
+
+  
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;  /* Make sure dropdown appears on top */
+    width: 100%;  /* Set a width for the dropdown */
+    top: 100%;    /* Adjust positioning if needed */
+}
+
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}

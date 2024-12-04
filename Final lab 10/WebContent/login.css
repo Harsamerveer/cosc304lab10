@@ -1,0 +1,127 @@
+/* Apply a beige background color to the entire page */
+body {
+    background-color: #f0f1d3; /* Beige background */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 10px;
+    gap: 20px;
+    position: relative;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.login-container {
+    background-color: rgb(221, 221, 221);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 520px; /* Add space from the left */
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+label {
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #5e17eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #4512c4;
+}
+
+.forgot-password {
+    color: #5e17eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* New CSS for the button and logo side by side */
+nav .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px; /* Add space between the button and the logo */
+    margin-bottom: 20px; /* Add some space below the nav items */
+}
+
+.btn {
+    background-color: #5e17eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-right: 135px;
+}
+
+.btn a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn img {
+    height: 20px; /* Adjust the size of the icon */
+    width: auto;
+    margin-right: 10px; /* Add space between the icon and text */
+}
+
+.btn:hover {
+    background-color: #4512c4;
+}
+
+.logo {
+    height: 90px; /* Adjust the size of the logo */
+    width: auto;
+}
