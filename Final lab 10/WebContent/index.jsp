@@ -135,6 +135,7 @@
                 String productName = rst2.getString("productName");
                 String productImageURL = rst2.getString("productImageURL"); 
                 String categoryName = rst2.getString("categoryName");//display category name
+                String totalSale = rst.getString("totalSale");
                 if (productImageURL != null && !productImageURL.isEmpty()) {
                     %>
                     <!-- Displaying image with restricted size -->
@@ -143,6 +144,9 @@
                     <img class="product-image" src="<%= productImageURL %>" alt="Product Image" />
                     <p class="product-name"><%= productName %></p>
                     <p class="product-name"><%= categoryName %></p>
+                    <p class="product-name">
+                        <%= totalSale %> <span>copies sold</span>
+                    </p>
                    
                 </div>
                     <% 
