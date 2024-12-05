@@ -68,17 +68,15 @@
             <button onclick="myFunction()" class="dropbtn">Select Language</button>
             <div id="myDropdown" class="dropdown-content">
                 <a href="#">Arabic</a>
-				<a href="#">Bengali</a>
-				<a href="#">Chinese</a>
-				<a href="#">Dutch</a>
-				<a href="#">German</a>
-				<a href="#">Hindi</a>
+                <a href="#">Bengali</a>
+                <a href="#">Chinese</a>
+                <a href="#">Dutch</a>
+                <a href="#">German</a>
+                <a href="#">Hindi</a>
                 <a href="#">Korean</a>
                 <a href="#">Japanese</a>
-				<a href="#">Panjabi</a>
-				<a href="#">Sanskrit</a>
-				<a href="#">Tibetan</a>
-				<a href="#">Tibetan (Amdo)</a>
+                <a href="#">Tibetan</a>
+                <a href="#">Ukrainian</a>
             </div>
         </div>
     </nav>

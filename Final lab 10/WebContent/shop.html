@@ -5,6 +5,25 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="index.css">
    <title>Mondo Books</title>
+   <script>
+	// JavaScript function to toggle the dropdown
+	function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks anywhere outside of it
+	window.onclick = function(event) {
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			for (var i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
+</script>
 </head>
 <body>
 
@@ -33,6 +52,22 @@
 		</form>
 	</div>
 	</li>
+	<!-- Dropdown for Language Selection -->
+	<div class="dropdown">
+		<button onclick="myFunction()" class="dropbtn">Select Language</button>
+		<div id="myDropdown" class="dropdown-content">
+			<a href="#">Arabic</a>
+			<a href="#">Bengali</a>
+			<a href="#">Chinese</a>
+			<a href="#">Dutch</a>
+			<a href="#">German</a>
+			<a href="#">Hindi</a>
+			<a href="#">Korean</a>
+			<a href="#">Japanese</a>
+			<a href="#">Tibetan</a>
+			<a href="#">Ukrainian</a>
+		</div>
+	</div>
 	</nav>
 
 

@@ -55,8 +55,9 @@
 			String productId = rst.getString("productId");
 			String productName = rst.getString("productName");
 			double productPrice = rst.getDouble("productPrice");
+			String productDesc = rst.getString("productDesc");
 			
-			String productPage = "product.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice;
+			String productPage = "product.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice + "&desc=" + URLEncoder.encode(productDesc, "UTF-8");
 			String addToCartLink = "addcart.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice;
 		%>
 		<tr>
