@@ -91,26 +91,56 @@ ResultSet rs = pstmt.executeQuery();
         out.print("No customer information found for user.");
     }
 
+    String sql2 = "SELECT * from ordersummary os join customer c on os.customerId = c.customerId WHERE userid = ?";
+    String sql3 = "SELECT * from orderproduct op join product p on op.productId = p.productId WHERE orderId = ?";
 
-    out.print("<!-- All the Orders Table -->");
+    PreparedStatement pstmt2 = con.prepareStatement(sql2); 
+    PreparedStatement pstmt3 = con.prepareStatement(sql3); 
+
+    pstmt2.setString(1, userName);  
+    
+    ResultSet rs2 = pstmt2.executeQuery();
+
     out.print("<h1>List all my orders</h1>");
-    out.print("<table border='1'>");
-    out.print("<tr>");
-    out.print("<th>Order Id</th>");
-    out.print("<td>" + "</td>");
-    out.print("<tr>");
-    out.print("<th>Order Date</th>");
-    out.print("<td>" + "</td>");
-    out.print("<tr>");
-    out.print("<th>Shipped to</th>");
-    out.print("<td>" + "</td>");
-    out.print("<tr>");
-    out.print("<th>Items</th>");
-    out.print("<td>" + "</td>");
-    out.print("</tr>");
+    if (rs2.next()) {
+    do {
+        out.print("<table border='1' style='margin-bottom: 50px;'>");
+        out.print("<!-- All the Orders Table -->");
+        out.print("<tr>");
+        out.print("<th>Order Id</th>");
+        out.print("<td>" + rs2.getInt("orderId") + "</td>");
+        out.print("<tr>");
+        out.print("<th>Order Date</th>");
+        out.print("<td>" + rs2.getString("orderDate") + "</td>");
+        out.print("<tr>");
+        out.print("<th>Shipped to</th>");
+        out.print("<td>" + rs2.getString("address") +"</td>");
+        out.print("<tr>");
+        
+        // Retrieve products for the current order
+        pstmt3.setInt(1, rs2.getInt("orderId"));
+        ResultSet rs3 = pstmt3.executeQuery();
+
+        out.print("<tr>");
+        out.print("<th>Items</th>");
+        out.print("<td>");
+
+        boolean hasItems = false;
+        while (rs3.next()) { // Iterate through the products for this order
+            hasItems = true;
+            out.print(rs3.getString("productName") + "<br>"); // List each product
+        }
+        if (!hasItems) {
+            out.print("No items for this order.");
+        }
+        out.print("</td>");
+        out.print("</tr>");
+        out.print("</table>"); // Close the table for this order
+    } while (rs2.next());
+    } else {
+    out.print("No orders found for user.");
+    }
     out.print("</table>");
-
-
 
 // Make sure to close connection
 	rs.close();
