@@ -119,10 +119,17 @@
          {
             //Select the top three books in the sales!
             String SQL = "SELECT TOP 3 productId, SUM(quantity) AS totalSale FROM orderproduct GROUP BY productId ORDER BY totalSale DESC";
+            String SQL2 = "SELECT * FROM product WHERE productId = ?";
+
             ResultSet rst= stmt.executeQuery(SQL);
             while (rst.next()) {
-            String productId = rst.getString("productId");
-            out.println("productID" + productId);
+                String productId = rst.getString("productId");
+                PreparedStatement pstmt = con.prepareStatement(SQL2);
+                pstmt.setString(1, productId);
+                ResultSet rst2 = pstmt.executeQuery();
+                while (rst2.next()) {
+                out.println(rst2.getString("productName"));
+                }
             }
             %>
         <h2>Recommended for you</h2>
