@@ -105,7 +105,7 @@
     java.util.Map<String, String> categoryColors = new java.util.HashMap<>();
     categoryColors.put("Bengali", "purple");
     categoryColors.put("Arabic", "darkgreen");
-    categoryColors.put("Chinese", "red");
+    categoryColors.put("Chinese", "darkred");
     categoryColors.put("German", "orange");
     categoryColors.put("Japanese", "darkyellow");
     categoryColors.put("Tibetan", "blue");
@@ -151,9 +151,13 @@
                 // Retrieve the productImageURL from the ResultSet
                 String productName = rst2.getString("productName");
                 String productImageURL = rst2.getString("productImageURL"); 
+                String productPrice = rst2.getString("productPrice");
                 String categoryName = rst2.getString("categoryName");//display category name
+                String productDesc = rst2.getString("productDesc");
                 String totalSale = rst.getString("totalSale");
 
+                String productPage = "product.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice + "&desc=" + URLEncoder.encode(productDesc, "UTF-8");
+               
                 // Get the color for the category
                 String categoryColor = categoryColors.getOrDefault(categoryName, "black"); // Default to black if no color found
 
@@ -163,7 +167,8 @@
                 
                     <div class="product-item">
                     <img class="product-image" src="<%= productImageURL %>" alt="Product Image" />
-                    <p class="product-name"><%= productName %></p>
+                    <p class="product-name"><a href="<%= productPage %>"><%= productName %></p></a>
+                    <p class="product-price">$<%= productPrice %></p>
                     <p class="product-category" style = "color: <%= categoryColor %>;"><%= categoryName %></p>
                     <p class="product-sales">
                         <%= totalSale %> <span>copies sold!</span>

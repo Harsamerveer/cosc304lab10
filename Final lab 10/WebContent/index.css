@@ -46,6 +46,12 @@
     font-weight: 700;
 }
 
+.product-item .product-price {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+}
+
 .product-item .product-sales {
     margin-top: 10px;
     font-size: 16px;
