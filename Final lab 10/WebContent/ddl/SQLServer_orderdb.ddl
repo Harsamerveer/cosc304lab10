@@ -143,15 +143,17 @@ CREATE TABLE review (
         ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO category(categoryName) VALUES ('Beverages');
-INSERT INTO category(categoryName) VALUES ('Condiments');
-INSERT INTO category(categoryName) VALUES ('Dairy Products');
-INSERT INTO category(categoryName) VALUES ('Produce');
-INSERT INTO category(categoryName) VALUES ('Meat/Poultry');
-INSERT INTO category(categoryName) VALUES ('Seafood');
-INSERT INTO category(categoryName) VALUES ('Confections');
-INSERT INTO category(categoryName) VALUES ('Grains/Cereals');
-
+INSERT INTO category(categoryName) VALUES ('Arabic');
+INSERT INTO category(categoryName) VALUES ('Bengali');
+INSERT INTO category(categoryName) VALUES ('Chinese');
+INSERT INTO category(categoryName) VALUES ('Dutch');
+INSERT INTO category(categoryName) VALUES ('German');
+INSERT INTO category(categoryName) VALUES ('Hindi');
+INSERT INTO category(categoryName) VALUES ('Korean');
+INSERT INTO category(categoryName) VALUES ('Japanese');
+INSERT INTO category(categoryName) VALUES ('Tibetan');
+INSERT INTO category(categoryName) VALUES ('Ukrainian');
+INSERT INTO category(categoryName) VALUES ('Punjabi');
 
 -- Arabic Books
 INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES 
