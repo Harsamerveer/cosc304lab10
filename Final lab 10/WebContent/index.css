@@ -20,7 +20,7 @@
     flex-direction: column;
     align-items: center; /* Center content inside each product item */
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.1); /* Optional: Light background */
+    background-color: rgba(255, 255, 255, 0.4); /* Optional: Light background */
     border-radius: 10px;
     padding: 15px;
     width: 200px; /* Define width for items */
@@ -36,6 +36,21 @@
     margin-top: 10px;
     font-size: 16px;
     color: white;
+    font-weight: 700;
+}
+
+.product-item .product-category {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+}
+
+.product-item .product-sales {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    font-style: italic;
 }
 
 .container{

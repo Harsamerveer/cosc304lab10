@@ -47,6 +47,8 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ include file="jdbc.jsp" %>
 
+
+
 <div class="container">
 
     <nav>
@@ -97,6 +99,21 @@
         </div>
     </nav>
 
+
+    <%
+    // Define the color mapping for categories
+    java.util.Map<String, String> categoryColors = new java.util.HashMap<>();
+    categoryColors.put("Bengali", "purple");
+    categoryColors.put("Arabic", "darkgreen");
+    categoryColors.put("Chinese", "red");
+    categoryColors.put("German", "orange");
+    categoryColors.put("Japanese", "darkyellow");
+    categoryColors.put("Tibetan", "blue");
+    categoryColors.put("Ukrainian", "yellow");
+    // Add other categories as needed
+%>
+
+
     <div class="content">
         <h2>Most popular</h2>
         <div class="most-popular">
@@ -136,6 +153,10 @@
                 String productImageURL = rst2.getString("productImageURL"); 
                 String categoryName = rst2.getString("categoryName");//display category name
                 String totalSale = rst.getString("totalSale");
+
+                // Get the color for the category
+                String categoryColor = categoryColors.getOrDefault(categoryName, "black"); // Default to black if no color found
+
                 if (productImageURL != null && !productImageURL.isEmpty()) {
                     %>
                     <!-- Displaying image with restricted size -->
@@ -143,9 +164,9 @@
                     <div class="product-item">
                     <img class="product-image" src="<%= productImageURL %>" alt="Product Image" />
                     <p class="product-name"><%= productName %></p>
-                    <p class="product-name"><%= categoryName %></p>
-                    <p class="product-name">
-                        <%= totalSale %> <span>copies sold</span>
+                    <p class="product-category" style = "color: <%= categoryColor %>;"><%= categoryName %></p>
+                    <p class="product-sales">
+                        <%= totalSale %> <span>copies sold!</span>
                     </p>
                    
                 </div>
