@@ -99,6 +99,7 @@
 
     <div class="content">
         <h2>Most popular</h2>
+        <div class="most-popular">
         <% 
         //get the products with the highest sales
 
@@ -122,16 +123,32 @@
             String SQL2 = "SELECT * FROM product WHERE productId = ?";
 
             ResultSet rst= stmt.executeQuery(SQL);
+            
             while (rst.next()) {
                 String productId = rst.getString("productId");
                 PreparedStatement pstmt = con.prepareStatement(SQL2);
                 pstmt.setString(1, productId);
                 ResultSet rst2 = pstmt.executeQuery();
                 while (rst2.next()) {
-                out.println(rst2.getString("productName"));
+            
+                // Retrieve the productImageURL from the ResultSet
+                String productName = rst2.getString("productName");
+                String productImageURL = rst2.getString("productImageURL"); 
+                if (productImageURL != null && !productImageURL.isEmpty()) {
+                    %>
+                    <!-- Displaying image with restricted size -->
+                
+                    <div class="product-item">
+                    <img class="product-image" src="<%= productImageURL %>" alt="Product Image" />
+                    <p class="product-name"><%= productName %></p>
+                   
+                </div>
+                    <% 
+                    }  
                 }
             }
             %>
+        </div>
         <h2>Recommended for you</h2>
     </div>
 </div>
