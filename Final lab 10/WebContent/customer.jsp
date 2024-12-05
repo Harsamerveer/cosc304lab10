@@ -39,7 +39,7 @@ ResultSet rs = pstmt.executeQuery();
         out.print("<table border='1'>");
   
        do {
-            out.print("<!-- Table Rows -->");
+            out.print("<!-- Customer Info Table Rows -->");
             out.print("<tr>");
             out.print("<th>Customer ID</th>");
             out.print("<td>" + rs.getInt("customerId") + "</td>");
@@ -54,7 +54,7 @@ ResultSet rs = pstmt.executeQuery();
             out.print("<td>" + rs.getString("email") + "</td>");
             out.print("<tr>");
                 out.print("<th>Phone Number</th>");
-
+                
             out.print("<td>" + rs.getString("phonenum") + "</td>");
             out.print("<tr>");
                 out.print("<th>Address</th>");
@@ -90,6 +90,28 @@ ResultSet rs = pstmt.executeQuery();
     } else {
         out.print("No customer information found for user.");
     }
+
+
+    out.print("<!-- All the Orders Table -->");
+    out.print("<h1>List all my orders</h1>");
+    out.print("<table border='1'>");
+    out.print("<tr>");
+    out.print("<th>Order Id</th>");
+    out.print("<td>" + "</td>");
+    out.print("<tr>");
+    out.print("<th>Order Date</th>");
+    out.print("<td>" + "</td>");
+    out.print("<tr>");
+    out.print("<th>Shipped to</th>");
+    out.print("<td>" + "</td>");
+    out.print("<tr>");
+    out.print("<th>Items</th>");
+    out.print("<td>" + "</td>");
+    out.print("</tr>");
+    out.print("</table>");
+
+
+
 // Make sure to close connection
 	rs.close();
 	con.close();

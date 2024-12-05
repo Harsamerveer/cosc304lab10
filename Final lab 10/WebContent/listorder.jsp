@@ -37,7 +37,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);
         String lastName = rst.getString("lastName");
         String orderDate = rst.getString("orderDate");
         String totalAmount = currFormat.format(rst.getDouble("totalAmount"));
-
+      
         %>
         <div>
             <table border="1">
