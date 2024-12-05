@@ -41,7 +41,7 @@
             <li><a href="admin.jsp">Administrators</a></li>
             <li><a href="logout.jsp">Log out</a></li>
         </ul>
-        <button class="btn"> <a href="login.jsp">Login </a></button>
+       
     </nav>
 
     <div style="display: flex; justify-content: center; align-items: center; height: 100px; text-align: center;">
