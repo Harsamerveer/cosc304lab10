@@ -1,3 +1,7 @@
+<%@ page import="java.sql.*, java.net.URLEncoder" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>   
@@ -5,6 +9,18 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="index.css">
    <title>Mondo Books</title>
+
+    <!-- CSS to limit image size -->
+    <style>
+        img.product-image {
+            max-width: 300px; /* Max width for the image */
+            max-height: 300px; /* Max height for the image */
+            width: auto;
+            height: auto;
+            object-fit: contain; /* Maintains aspect ratio */
+        }
+    </style>
+    
    <script>
        // JavaScript function to toggle the dropdown
        function myFunction() {
@@ -41,7 +57,7 @@
             <li><a href="admin.jsp">Administrators</a></li>
             <li><a href="logout.jsp">Log out</a></li>
         </ul>
-       
+        <button class="btn"> <a href="showcart.jsp">Cart </a></button>
     </nav>
 
     <div style="display: flex; justify-content: center; align-items: center; height: 100px; text-align: center;">
@@ -82,9 +98,35 @@
     </nav>
 
     <div class="content">
-        <h1>Books in our heritage language</h1>
-        <p><br> Mondo means "World" in Esperanto. <br><br> When you pick a book from Mondo, you join us in preserving languages in this world.</p>
+        <h2>Most popular</h2>
+        <% 
+        //get the products with the highest sales
+
+        // Load SQL Server driver
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (java.lang.ClassNotFoundException e) {
+            out.println("ClassNotFoundException: " + e);
+        }
+
+        // Connection parameters
+        String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=orders;TrustServerCertificate=True";		
+        String uid = "sa";
+        String pw = "304#sa#pw";
+
+        try (Connection con = DriverManager.getConnection(url, uid, pw)) {
+            //Select the top three books in the sales!
+            String SQL = "SELECT TOP 3 FROM orderproduct ORDER BY SUM(quantity) DESC GROUP BY productId";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            %>
+        <h2>Recommended for you</h2>
     </div>
 </div>
+<%
+con.close();
+	} catch (SQLException ex) {
+		out.println("SQLException: " + ex);
+	}
+	%>
 </body>
 </html>
