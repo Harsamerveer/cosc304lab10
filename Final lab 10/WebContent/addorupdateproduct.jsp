@@ -1,43 +1,3 @@
-<%@ page import="java.sql.*" %>
-<%@ page import="java.io.*" %>
-<%@ page import="javax.servlet.annotation.MultipartConfig" %>
-
-<% 
-    // Database connection settings
-    String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=orders;TrustServerCertificate=True";
-    String uid = "sa";
-    String pw = "304#sa#pw";
-
-    // Get the action parameter (add or update)
-    String action = request.getParameter("action");
-    String productId = request.getParameter("productId");
-    String productName = "";
-    String productPrice = "";
-    String productImageURL = "";
-    String productDesc = "";
-    String categoryId = "";
-
-    if ("update".equals(action) && productId != null) {
-        // Fetch existing product details for updating
-        try (Connection con = DriverManager.getConnection(url, uid, pw)) {
-            String sql = "SELECT * FROM product WHERE productId = ?";
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, Integer.parseInt(productId));
-            ResultSet rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                productName = rs.getString("productName");
-                productPrice = rs.getString("productPrice");
-                productImageURL = rs.getString("productImageURL");
-                productDesc = rs.getString("productDesc");
-                categoryId = rs.getString("categoryId");
-            }
-        } catch (SQLException e) {
-            out.println("Error fetching product: " + e.getMessage());
-        }
-    }
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,12 +24,57 @@
 </head>
 <body>
 
-<h1><%= ("update".equals(action)) ? "Update Product" : "Add Product" %></h1>
+<h1>Add or Update Product</h1>
+
+
+<%@ include file="auth.jsp" %>
+<%@ include file="jdbc.jsp" %>
+<%@ page import="java.sql.*" %>
+<% 
+try {
+    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+} catch (java.lang.ClassNotFoundException e) {
+    out.println("ClassNotFoundException: " + e);
+}
+
+String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=orders;TrustServerCertificate=True";        
+String uid = "sa";
+String pw = "304#sa#pw";
+
+
+
+    String action = request.getParameter("action");
+    String productId = request.getParameter("productId");
+    String productName = "";
+    String productPrice = "";
+    String productImageURL = "";
+    String productDesc = "";
+    String categoryId = "";
+
+    if (action != null && action.equals("update") && productId != null) {
+        // Fetch existing product details for update
+        try (Connection con = DriverManager.getConnection(url, uid, pw);
+        Statement stmt = con.createStatement()) {
+            String sql = "SELECT * FROM product WHERE productId = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, Integer.parseInt(productId));
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                productName = rs.getString("productName");
+                productPrice = rs.getString("productPrice");
+                productImageURL = rs.getString("productImageURL");
+                productDesc = rs.getString("productDesc");
+                categoryId = rs.getString("categoryId");
+            }
+        } catch (SQLException e) {
+            out.println("Error fetching product: " + e.getMessage());
+        }
+    }
+%>
 
 <form action="addorupdateproduct.jsp" method="POST" enctype="multipart/form-data">
-    <!-- Action hidden field -->
-    <input type="hidden" name="action" value="<%= ("update".equals(action)) ? "update" : "add" %>">
-    <!-- Product ID hidden field (only for updates) -->
+    <input type="hidden" name="action" value="<%= (action != null && action.equals("update")) ? "update" : "add" %>">
     <input type="hidden" name="productId" value="<%= productId != null ? productId : "" %>">
     
     <label for="productName">Product Name:</label>
@@ -81,7 +86,7 @@
     <label for="productImageURL">Product Image URL:</label>
     <input type="text" id="productImageURL" name="productImageURL" value="<%= productImageURL %>">
 
-    <label for="productImage">Product Image (optional):</label>
+    <label for="productImage">Product Image:</label>
     <input type="file" id="productImage" name="productImage">
 
     <label for="productDesc">Product Description:</label>
@@ -89,6 +94,7 @@
 
     <label for="categoryId">Category:</label>
     <select id="categoryId" name="categoryId" required>
+        <!-- Fetch categories from the database to populate this dropdown -->
         <% 
             try (Connection con = DriverManager.getConnection(url, uid, pw);
                  Statement stmt = con.createStatement()) {
@@ -110,7 +116,8 @@
         %>
     </select>
 
-    <input type="submit" value="<%= ("update".equals(action)) ? "Update Product" : "Add Product" %>">
+    <input type="submit" value="<%= (action != null && action.equals("update")) ? "Update Product" : "Add Product" %>">
 </form>
+
 </body>
 </html>

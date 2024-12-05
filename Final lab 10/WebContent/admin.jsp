@@ -30,7 +30,21 @@
 <h1>Administrator Dashboard</h1>
 <nav>
     <a href="customers.jsp">View Customers</a>
-</nav>
+    <a href="books.jsp">View Books</a>
+    <a href="addorupdateproduct.jsp">Add Book</a>
+    <a href="javascript:void(0);" onclick="promptForProductId()">Update Book</a>
+
+    <script>
+        function promptForProductId() {
+            // Ask the admin for the productId
+            var productId = prompt("Please enter the Book ID to update:");
+    
+            // If a productId is provided, redirect to the update page with the productId
+            if (productId) {
+                window.location.href = "addorupdateproduct.jsp?action=update&productId=" + productId;
+            }
+        }
+    </script></nav>
 <hr>
 
 <h2>Daily Sales Report</h2>
