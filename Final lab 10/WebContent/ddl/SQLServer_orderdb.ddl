@@ -153,7 +153,6 @@ INSERT INTO category(categoryName) VALUES ('Korean');
 INSERT INTO category(categoryName) VALUES ('Japanese');
 INSERT INTO category(categoryName) VALUES ('Tibetan');
 INSERT INTO category(categoryName) VALUES ('Ukrainian');
-INSERT INTO category(categoryName) VALUES ('Punjabi');
 
 -- Arabic Books
 INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES 

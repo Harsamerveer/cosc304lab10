@@ -120,7 +120,7 @@
          {
             //Select the top three books in the sales!
             String SQL = "SELECT TOP 3 productId, SUM(quantity) AS totalSale FROM orderproduct GROUP BY productId ORDER BY totalSale DESC";
-            String SQL2 = "SELECT * FROM product WHERE productId = ?";
+            String SQL2 = "SELECT * FROM product P JOIN category C ON P.categoryId = C.categoryId WHERE productId = ?";
 
             ResultSet rst= stmt.executeQuery(SQL);
             
@@ -134,6 +134,7 @@
                 // Retrieve the productImageURL from the ResultSet
                 String productName = rst2.getString("productName");
                 String productImageURL = rst2.getString("productImageURL"); 
+                String categoryName = rst2.getString("categoryName");//display category name
                 if (productImageURL != null && !productImageURL.isEmpty()) {
                     %>
                     <!-- Displaying image with restricted size -->
@@ -141,6 +142,7 @@
                     <div class="product-item">
                     <img class="product-image" src="<%= productImageURL %>" alt="Product Image" />
                     <p class="product-name"><%= productName %></p>
+                    <p class="product-name"><%= categoryName %></p>
                    
                 </div>
                     <% 
