@@ -1,0 +1,15 @@
+/* Apply a beige background color to the entire page with a background image */
+body {
+    background-color: #f0f1d3; /* Beige background */
+    background-image: linear-gradient(rgba(9,0,77,0.65),rgba(9,0,77,0.65)), url(img/background.jpg);
+    background-size: cover; /* Cover the entire page */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-position: center center; /* Center the background image */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+}
+
