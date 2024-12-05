@@ -12,6 +12,7 @@
     gap: 20px; /* Space between items */
     margin: 20px 0; /* Add vertical spacing */
     padding: 10px 0; /* Optional padding to avoid items sticking to the edges */
+    width: 1000px; 
 }
 
 .product-item {
