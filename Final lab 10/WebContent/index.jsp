@@ -114,10 +114,16 @@
         String uid = "sa";
         String pw = "304#sa#pw";
 
-        try (Connection con = DriverManager.getConnection(url, uid, pw)) {
+        try (Connection con = DriverManager.getConnection(url, uid, pw);
+        Statement stmt= con.createStatement();)
+         {
             //Select the top three books in the sales!
-            String SQL = "SELECT TOP 3 FROM orderproduct ORDER BY SUM(quantity) DESC GROUP BY productId";
-            PreparedStatement pstmt = con.prepareStatement(SQL);
+            String SQL = "SELECT TOP 3 productId, SUM(quantity) AS totalSale FROM orderproduct GROUP BY productId ORDER BY totalSale DESC";
+            ResultSet rst= stmt.executeQuery(SQL);
+            while (rst.next()) {
+            String productId = rst.getString("productId");
+            out.println("productID" + productId);
+            }
             %>
         <h2>Recommended for you</h2>
     </div>
