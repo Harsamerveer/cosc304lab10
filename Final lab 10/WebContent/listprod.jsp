@@ -1,14 +1,16 @@
-<%@ page import="java.sql.*,java.net.URLEncoder" %>
+
+<%@ page import="java.sql.*, java.net.URLEncoder" %>
 <%@ page import="java.text.NumberFormat" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Harsamerveer singh Grocery</title>
+    <title>Product Search</title>
 </head>
 <body>
 
-	<h1>Search for the products you want to buy:</h1>
+    <h1>Search for the products you want to buy:</h1>
+
 
 	<form method="get" action="listprod.jsp">
 		<input type="text" name="productName" size="50">
@@ -53,9 +55,8 @@
 			String productId = rst.getString("productId");
 			String productName = rst.getString("productName");
 			double productPrice = rst.getDouble("productPrice");
-			String productDesc = rst.getString("productDesc");
 			
-			String productPage = "product.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice + "&desc=" + URLEncoder.encode(productDesc, "UTF-8");
+			String productPage = "product.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice;
 			String addToCartLink = "addcart.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice;
 		%>
 		<tr>

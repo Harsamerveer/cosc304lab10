@@ -117,43 +117,75 @@ String pw = "304#sa#pw";
 <body>
     <h2>Create Account</h2>
     <form action="create-account.jsp" method="POST" onsubmit="return validateForm()">
-        <label for="firstName">First Name:</label><br>
-        <input type="text" id="firstName" name="firstName" required><br><br>
-
-        <label for="lastName">Last Name:</label><br>
-        <input type="text" id="lastName" name="lastName" required><br><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="phonenum">Phone Number (Optional):</label><br>
-        <input type="text" id="phonenum" name="phonenum"><br><br>
-
-        <label for="address">Address (Optional):</label><br>
-        <input type="text" id="address" name="address"><br><br>
-
-        <label for="city">City (Optional):</label><br>
-        <input type="text" id="city" name="city"><br><br>
-
-        <label for="state">State (Optional):</label><br>
-        <input type="text" id="state" name="state"><br><br>
-
-        <label for="postalCode">Postal Code (Optional):</label><br>
-        <input type="text" id="postalCode" name="postalCode"><br><br>
-
-        <label for="country">Country (Optional):</label><br>
-        <input type="text" id="country" name="country"><br><br>
-
-        <label for="userid">User ID:</label><br>
-        <input type="text" id="userid" name="userid" required><br><br>
-
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-
-        <label for="confirmPassword">Confirm Password:</label><br>
-        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
-
+        <!-- First Name and Last Name -->
+        <div class="form-row">
+            <div>
+                <label for="firstName">First Name <span style="color: red;">*</span></label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div>
+                <label for="lastName">Last Name <span style="color: red;">*</span></label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+        </div>
+    
+        <!-- Email -->
+        <div class="form-row full-width">
+            <label for="email">Email <span style="color: red;">*</span></label>
+            <input type="email" id="email" name="email" required>
+        </div>
+    
+        <!-- Phone Number -->
+        <div class="form-row full-width">
+            <label for="phonenum">Phone Number (optional) <span style="color: red;">*</span></label>
+            <input type="text" id="phonenum" name="phonenum">
+        </div>
+    
+        <!-- Country and City -->
+        <div class="form-row">
+            <div>
+                <label for="country">Country <span style="color: red;">*</span></label>
+                <input type="text" id="country" name="country" required>
+            </div>
+            <div>
+                <label for="city">City <span style="color: red;">*</span></label>
+                <input type="text" id="city" name="city" required>
+            </div>
+        </div>
+    
+        <!-- Address and Postal Code -->
+        <div class="form-row">
+            <div>
+                <label for="address">Address <span style="color: red;">*</span></label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div>
+                <label for="postalCode">Postal Code <span style="color: red;">*</span></label>
+                <input type="text" id="postalCode" name="postalCode" required>
+            </div>
+        </div>
+    
+        <!-- User ID -->
+        <div class="form-row full-width">
+            <label for="userid">User ID <span style="color: red;">*</span></label>
+            <input type="text" id="userid" name="userid" required>
+        </div>
+    
+        <!-- Password -->
+        <div class="form-row full-width">
+            <label for="password">Password <span style="color: red;">*</span></label>
+            <input type="password" id="password" name="password" required>
+        </div>
+    
+        <!-- Confirm Password -->
+        <div class="form-row full-width">
+            <label for="confirmPassword">Confirm Password <span style="color: red;">*</span></label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+    
+        <!-- Submit Button -->
         <button type="submit">Create Account</button>
     </form>
+    
 </body>
 </html>

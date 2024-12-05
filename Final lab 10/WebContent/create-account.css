@@ -1,15 +1,74 @@
-/* Apply a beige background color to the entire page with a background image */
+/* Set body styling */
 body {
-    background-color: #f0f1d3; /* Beige background */
-    background-image: linear-gradient(rgba(9,0,77,0.65),rgba(9,0,77,0.65)), url(img/background.jpg);
-    background-size: cover; /* Cover the entire page */
-    background-repeat: no-repeat; /* Prevent tiling */
-    background-position: center center; /* Center the background image */
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Full viewport height */
+    font-family: Arial, sans-serif;
+    background-color: #f7f2e8; /* Beige background color */
     margin: 0;
+    padding: 0;
 }
 
+/* Center the form block */
+form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title styling */
+h2 {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form rows container */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Input labels */
+label {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Input fields */
+input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Single-column fields (e.g., email, user ID, password) */
+.form-row.full-width input {
+    width: 60%;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button[type="submit"]:hover {
+    background-color: #4cae4c;
+}
