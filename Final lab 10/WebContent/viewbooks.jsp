@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="viewbooks.css">
     <title>Product Search</title>
 </head>
 <body>
@@ -12,9 +13,9 @@
     <h1>Search for the products you want to buy:</h1>
 
 
-	<form method="get" action="books.jsp">
+	<form method="get" action="viewbooks.jsp">
 		<input type="text" name="productName" size="50">
-		<input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
+		<input type="submit" value="Submit"><input type="reset" value="Reset"> 
 	</form>
 	
 	<% 

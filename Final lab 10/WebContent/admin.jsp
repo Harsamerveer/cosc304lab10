@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Administrator Page</title>
+    <link rel="stylesheet" href="admin.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         
@@ -27,21 +28,48 @@
 </head>
 <body>
 <div>
-<h1>Administrator Dashboard</h1>
-<nav>
-    <a href="customers.jsp">View Customers</a>
-    <a href="books.jsp">View Books</a>
-    <a href="addorupdateproduct.jsp">Add Book</a>
-    <a href="javascript:void(0);" onclick="promptForProductId()">Update Book</a>
-
+    <main>
+        <section>
+            <h2>Welcome to the Admin Portal</h2>
+            <p>Select an option from the menu to manage customers, products, or warehouses.</p>
+        </section>
+    </main>
+    <nav>
+    <ul>
+        <li><a href="customers.jsp">View Customers</a></li>
+        <li><a href="addupdatecustomer.jsp?action=add">Add Customer</a></li>
+        <li><a href="javascript:void(0);" onclick="promptForCustomerId()">Update Customer</a></li>
+        <li><a href="viewbooks.jsp">View Books</a></li>
+        <!-- <li><a href="addupdateproduct.jsp?action=add">Add Book</a></li>
+        <li><a href="javascript:void(0);" onclick="promptForProductId()">Update Book</a></li> -->
+        <li><a href="warehouses.jsp">View Warehouses</a></li>
+        <li><a href="addupdatewarehouse.jsp?action=add">Add Warehouse</a></li>
+        <li><a href="javascript:void(0);" onclick="promptForWarehouseId()">Update Warehouse</a></li>
+    </ul>
     <script>
-        function promptForProductId() {
+      /*   function promptForProductId() {
             // Ask the admin for the productId
             var productId = prompt("Please enter the Book ID to update:");
     
             // If a productId is provided, redirect to the update page with the productId
             if (productId) {
-                window.location.href = "addorupdateproduct.jsp?action=update&productId=" + productId;
+                window.location.href = "addupdateproduct.jsp?action=update&productId=" + productId;
+            }
+        } */
+
+        function promptForCustomerId() {
+            // Ask the admin for the customerId
+            var customerId = prompt("Please enter the Customer ID to update:");
+    
+            // If a customerId is provided, redirect to the update page with the customerId
+            if (customerId) {
+                window.location.href = "addupdatecustomer.jsp?action=update&customerId=" + customerId;
+            }
+        }
+        function promptForWarehouseId() {
+            var warehouseId = prompt("Please enter the Warehouse ID to update:");
+            if (warehouseId) {
+                window.location.href = "addupdatewarehouse.jsp?action=update&warehouseId=" + warehouseId;
             }
         }
     </script></nav>
