@@ -22,14 +22,17 @@
     </style>
 </head>
 <body>
+    
     <h1>Search for the products you want to buy:</h1>
-    <form method="get" action="listprod.jsp">
-        <input type="text" name="productName" size="50">
-        <input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
-    </form>
+
+        <form method="get" action="listprod.jsp" class="search-form">
+            <input type="text" name="productName" size="50" placeholder="Enter product name...">
+            <button type="submit" class="btn submit">Search</button>
+            <button type="reset" class="btn reset">Reset</button>
+        </form>
 
     <div class="container">
-        <div class="most-popular">
+        <div class="book-list">
             <% 
             // Get product name to search for
             String name = request.getParameter("productName");
