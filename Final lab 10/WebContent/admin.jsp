@@ -40,14 +40,15 @@
         <li><a href="addupdatecustomer.jsp?action=add">Add Customer</a></li>
         <li><a href="javascript:void(0);" onclick="promptForCustomerId()">Update Customer</a></li>
         <li><a href="viewbooks.jsp">View Books</a></li>
-        <!-- <li><a href="addupdateproduct.jsp?action=add">Add Book</a></li>
-        <li><a href="javascript:void(0);" onclick="promptForProductId()">Update Book</a></li> -->
+        <li><a href="addupdateproduct.jsp?action=add">Add Book</a></li>
+        <li><a href="javascript:void(0);" onclick="promptForProductId()">Update Book</a></li> 
         <li><a href="warehouses.jsp">View Warehouses</a></li>
         <li><a href="addupdatewarehouse.jsp?action=add">Add Warehouse</a></li>
         <li><a href="javascript:void(0);" onclick="promptForWarehouseId()">Update Warehouse</a></li>
+        <li><a href="loaddata.jsp">Database Restore </a></li>
     </ul>
     <script>
-      /*   function promptForProductId() {
+       function promptForProductId() {
             // Ask the admin for the productId
             var productId = prompt("Please enter the Book ID to update:");
     
@@ -55,7 +56,7 @@
             if (productId) {
                 window.location.href = "addupdateproduct.jsp?action=update&productId=" + productId;
             }
-        } */
+        } 
 
         function promptForCustomerId() {
             // Ask the admin for the customerId

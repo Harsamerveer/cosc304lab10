@@ -122,5 +122,8 @@
         <button type="submit">Submit</button>
     </form>
     <p><%= message %></p>
+    <!-- Admin Dashboard Button -->
+	<a href="admin.jsp" class="b1">Admin Dashboard</a>
+   
 </body>
 </html>

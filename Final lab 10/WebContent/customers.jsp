@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Customer List</title>
     <style>
+     
+
+            h1 {
+                text-align: center;
+                padding: 20px;
+                margin: 30px;
+                color: rgb(205, 129, 129);
+                border-radius: 10px;
+                box-sizing: border-box;
+            }
         table {
             border-collapse: collapse;
             width: 100%;
@@ -19,6 +29,30 @@
             background-color: #f2f2f2;
             text-align: left;
         }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin: 20px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
     </style>
 </head>
 <body>
@@ -93,5 +127,8 @@
             %>
         </tbody>
     </table>
+    <!-- Admin Dashboard Button -->
+	<a href="admin.jsp" class="button">Admin Dashboard</a>
+   
 </body>
 </html>

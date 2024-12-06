@@ -28,53 +28,70 @@
 	} catch (java.lang.ClassNotFoundException e) {
 		out.println("ClassNotFoundException: " + e);
 	}
+		// Database connection parameters
+		String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=orders;TrustServerCertificate=True";
+		String uid = "sa";
+		String pw = "304#sa#pw";
 	
-	// Connection parameters
-	String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=orders;TrustServerCertificate=True";		
-	String uid = "sa";
-	String pw = "304#sa#pw";
+		// Try-with-resources to manage database connection automatically
+		try (Connection con = DriverManager.getConnection(url, uid, pw)) {
+			String SQL = "SELECT p.productId, p.productName, p.productPrice, p.productDesc, c.categoryId, c.categoryName "
+					   + "FROM product p "
+					   + "JOIN category c ON p.categoryId = c.categoryId "
+					   + "WHERE p.productName LIKE ?";
+			PreparedStatement pstmt = con.prepareStatement(SQL);
 	
-	try (Connection con = DriverManager.getConnection(url, uid, pw)) {
-		String SQL = "SELECT * FROM product WHERE productName LIKE ?";
-		PreparedStatement pstmt = con.prepareStatement(SQL);
-		
-		// If no search term is provided, fetch all products
-		if (name == null || name.trim().isEmpty()) {
-			pstmt.setString(1, "%");
-		} else {
-			pstmt.setString(1, "%" + name + "%");
-		}
-		
-		ResultSet rst = pstmt.executeQuery();
+			// If no search term is provided, fetch all products
+			if (name == null || name.trim().isEmpty()) {
+				pstmt.setString(1, "%");  // Use wildcard to select all products
+			} else {
+				pstmt.setString(1, "%" + name + "%");  // Filter by the provided name
+			}
+	
+			ResultSet rst = pstmt.executeQuery();
 	%>
 	
+	<!-- Display results in a table -->
 	<table border="2">
-		<tr><th>Product Name</th><th>Price</th></tr>
+		<tr>
+			<th>Product Name</th>
+			<th>Price</th>
+			<th>Category Name</th>
+		</tr>
 		<%
-		// Display the filtered results in the table
-		while (rst.next()) {
-			String productId = rst.getString("productId");
-			String productName = rst.getString("productName");
-			double productPrice = rst.getDouble("productPrice");
-			String productDesc = rst.getString("productDesc");
-			
-			String productPage = "product.jsp?id=" + productId + "&name=" + URLEncoder.encode(productName, "UTF-8") + "&price=" + productPrice + "&desc=" + URLEncoder.encode(productDesc, "UTF-8");
+			// Display the results in the table
+			while (rst.next()) {
+				String productId = rst.getString("productId");
+				String productName = rst.getString("productName");
+				double productPrice = rst.getDouble("productPrice");
+				String productDesc = rst.getString("productDesc");
+				int categoryId = rst.getInt("categoryId");
+				String categoryName = rst.getString("categoryName");
+
+				// Create the URL for deleting the product
+				String deleteUrl = "deleteproduct.jsp?productId=" + productId;
+				
 		%>
 		<tr>
 			<td><%= productName %></a></td>
 			<td>$<%= productPrice %></td>
+			<td><%= categoryName %></td>
+			<td><a href="<%= deleteUrl %>" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a></td>
+
 		</tr>
 		<%
-		}
+			}
 		%>
 	</table>
 	
 	<%
-		con.close();
-	} catch (SQLException ex) {
-		out.println("SQLException: " + ex);
-	}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	%>
 	
+	<!-- Admin Dashboard Button -->
+	<a href="admin.jsp" class="button">Admin Dashboard</a>
+   
 	</body>
 	</html>

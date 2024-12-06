@@ -1,5 +1,5 @@
-<%@ page import="java.sql.*" %>
-<%@ page import="java.sql.*, java.io.InputStream, java.math.BigDecimal" %>
+<%@ page import="java.sql.*, java.util.List, java.util.ArrayList" %>
+
 <%
     // Database connection parameters
     String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=orders;TrustServerCertificate=True";
@@ -8,20 +8,18 @@
 
     Connection conn = null;
     PreparedStatement pstmt = null;
+    ResultSet rs = null;
 
     // Action and productId from query parameters
     String action = request.getParameter("action");
     String productId = request.getParameter("productId");
 
-    // Initialize form variables
-    String productName = "";
-    String productPrice = "";
-    String productImageURL = "";
-    String productDesc = "";
-    String categoryId = "";
-
     // Variable for feedback message
     String message = "";
+    String selectedCategoryId = "";
+
+    // List to hold category options
+    List<String> categories = new ArrayList<>();
 
     // Check if the form was submitted
     if ("POST".equalsIgnoreCase(request.getMethod())) {
@@ -29,55 +27,32 @@
             // Load the SQL Server JDBC driver
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(url, uid, pw);
+                        
+            // Get form parameters
+            String productName = request.getParameter("productName");
+            String productPrice = request.getParameter("productPrice");
+            String productDesc = request.getParameter("productDesc");
+            selectedCategoryId = request.getParameter("categoryId");
 
-            // Get form parameters for the product
-            productName = request.getParameter("productName");
-            productPrice = request.getParameter("productPrice");
-            productImageURL = request.getParameter("productImageURL");
-            Part productImagePart = request.getPart("productImage"); // for file upload
-            productDesc = request.getParameter("productDesc");
-            categoryId = request.getParameter("categoryId");
-
-            // Check if action is "update" and productId is provided
             if ("update".equalsIgnoreCase(action) && productId != null && !productId.isEmpty()) {
                 // Update existing product
-                String updateSQL = "UPDATE product SET productName = ?, productPrice = ?, productImageURL = ?, productImage = ?, productDesc = ?, categoryId = ? WHERE productId = ?";
+                String updateSQL = "UPDATE product SET productName = ?, productPrice = ?, productDesc = ?, categoryId = ? WHERE productId = ?";
                 pstmt = conn.prepareStatement(updateSQL);
                 pstmt.setString(1, productName);
-                pstmt.setBigDecimal(2, new BigDecimal(productPrice));  // Use BigDecimal for price
-                pstmt.setString(3, productImageURL);
-                
-                if (productImagePart != null) {
-                    InputStream inputStream = productImagePart.getInputStream();
-                    pstmt.setBinaryStream(4, inputStream);
-                } else {
-                    pstmt.setNull(4, Types.BINARY); // In case no image is uploaded
-                }
-
-                pstmt.setString(5, productDesc);
-                pstmt.setInt(6, Integer.parseInt(categoryId));
-                pstmt.setInt(7, Integer.parseInt(productId));
-
+                pstmt.setBigDecimal(2, new java.math.BigDecimal(productPrice));
+                pstmt.setString(3, productDesc);
+                pstmt.setInt(4, Integer.parseInt(selectedCategoryId));
+                pstmt.setInt(5, Integer.parseInt(productId));
                 int rows = pstmt.executeUpdate();
                 message = rows > 0 ? "Product updated successfully!" : "Product update failed.";
             } else if ("add".equalsIgnoreCase(action)) {
                 // Add new product
-                String insertSQL = "INSERT INTO product (productName, productPrice, productImageURL, productImage, productDesc, categoryId) VALUES (?, ?, ?, ?, ?, ?)";
+                String insertSQL = "INSERT INTO product (productName, productPrice, productDesc, categoryId) VALUES (?, ?, ?, ?)";
                 pstmt = conn.prepareStatement(insertSQL);
                 pstmt.setString(1, productName);
-                pstmt.setBigDecimal(2, new BigDecimal(productPrice));  // Use BigDecimal for price
-                pstmt.setString(3, productImageURL);
-                
-                if (productImagePart != null) {
-                    InputStream inputStream = productImagePart.getInputStream();
-                    pstmt.setBinaryStream(4, inputStream);
-                } else {
-                    pstmt.setNull(4, Types.BINARY); // In case no image is uploaded
-                }
-
-                pstmt.setString(5, productDesc);
-                pstmt.setInt(6, Integer.parseInt(categoryId));
-
+                pstmt.setBigDecimal(2, new java.math.BigDecimal(productPrice));
+                pstmt.setString(3, productDesc);
+                pstmt.setInt(4, Integer.parseInt(selectedCategoryId));
                 int rows = pstmt.executeUpdate();
                 message = rows > 0 ? "Product added successfully!" : "Product addition failed.";
             } else {
@@ -94,39 +69,71 @@
             }
         }
     }
+
+    // Retrieve categories for the dropdown
+    try {
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        conn = DriverManager.getConnection(url, uid, pw);
+        String categorySQL = "SELECT categoryId, categoryName FROM category";
+        pstmt = conn.prepareStatement(categorySQL);
+        rs = pstmt.executeQuery();
+        
+        while (rs.next()) {
+            categories.add(rs.getString("categoryId") + ":" + rs.getString("categoryName"));
+        }
+    } catch (Exception e) {
+        message = "Error retrieving categories: " + e.getMessage();
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (pstmt != null) pstmt.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            message += " (Closing connection failed: " + e.getMessage() + ")";
+        }
+    }
 %>
 
-
 <html>
-<head>
-    <link rel="stylesheet" href="generaladdupdate.css">
-    <title>Add or Update Product</title>
-</head>
-<body>
-    <h1><%= "update".equalsIgnoreCase(action) ? "Update Product" : "Add Product" %></h1>
-    <form method="post" enctype="multipart/form-data" action="addupdateproduct.jsp?action=<%= action %>&productId=<%= productId %>">
-        <% if ("update".equalsIgnoreCase(action)) { %>
-            <label for="productId">Product ID:</label>
-            <input type="text" name="productId" id="productId" value="<%= productId %>" readonly><br><br>
-        <% } %>
+    <head>
+        <link rel="stylesheet" href="generaladdupdate.css">
+        <title>Add or Update Product</title>
+    </head>
+    <body>
+        <h1><%= "update".equalsIgnoreCase(action) ? "Update Product" : "Add Product" %></h1>
+        <form method="post" action="addupdateproduct.jsp?action=<%= action %>&productId=<%= productId %>">
+            <% if ("update".equalsIgnoreCase(action)) { %>
+                <label for="productId">Product ID:</label>
+                <input type="text" name="productId" id="productId" value="<%= productId %>" readonly><br><br>
+            <% } %>
 
-    <label for="productName">Product Name:</label>
-    <input type="text" id="productName" name="productName" value="<%= productName %>" required>
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" required><br><br>
 
-    <label for="productPrice">Product Price:</label>
-    <input type="text" id="productPrice" name="productPrice" value="<%= productPrice %>" required>
+            <label for="productPrice">Product Price:</label>
+            <input type="text" id="productPrice" name="productPrice" required><br><br>
 
-    <label for="productImageURL">Product Image URL:</label>
-    <input type="text" id="productImageURL" name="productImageURL" value="<%= productImageURL %>">
+            <label for="productDesc">Product Description:</label>
+            <textarea id="productDesc" name="productDesc" required></textarea><br><br>
 
-    <label for="productImage">Product Image:</label>
-    <input type="file" id="productImage" name="productImage">
+            <label for="categoryId">Category:</label>
+            <select id="categoryId" name="categoryId" required>
+                <option value="">--Select Category--</option>
+                <% for (String category : categories) { 
+                        String[] categoryParts = category.split(":");
+                        String categoryId = categoryParts[0];
+                        String categoryName = categoryParts[1];
+                        // Check if the current category is selected
+                        String selected = categoryId.equals(selectedCategoryId) ? "selected" : "";
+                %>
+                    <option value="<%= categoryId %>" <%= selected %>><%= categoryName %></option>
+                <% } %>
+            </select><br><br>
 
-    <label for="productDesc">Product Description:</label>
-    <textarea id="productDesc" name="productDesc" rows="5" required><%= productDesc %></textarea>
-
-    <input type="submit" value="<%= "update".equalsIgnoreCase(action) ? "Update Product" : "Add Product" %>">
-</form>
-<p><%= message %></p>   
-</body>
+            <button type="submit">Submit</button>
+        </form>
+        <p><%= message %></p>
+        <!-- Admin Dashboard Button -->
+	<a href="admin.jsp" class="b1">Admin Dashboard</a>
+    </body>
 </html>

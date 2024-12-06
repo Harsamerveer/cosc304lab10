@@ -72,3 +72,27 @@ p {
     margin-top: 15px;
     text-align: center;
 }
+
+
+.b1 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+}
+
+.b1:hover {
+    background-color: #45a049;
+}
+
+.b1:focus {
+    outline: none;
+}
