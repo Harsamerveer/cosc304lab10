@@ -9,7 +9,6 @@ DROP TABLE shipment;
 DROP TABLE productinventory;
 DROP TABLE warehouse;
 DROP TABLE orderproduct;
-DROP TABLE incart;
 DROP TABLE product;
 DROP TABLE category;
 DROP TABLE ordersummary;
@@ -90,16 +89,15 @@ CREATE TABLE orderproduct (
 );
 
 CREATE TABLE incart (
-    orderId             INT,
-    productId           INT,
-    quantity            INT,
-    price               DECIMAL(10,2),  
-    PRIMARY KEY (orderId, productId),
-    FOREIGN KEY (orderId) REFERENCES ordersummary(orderId)
-        ON UPDATE CASCADE ON DELETE NO ACTION,
+    cartId INT,
+    productId INT,
+    quantity INT,
+    price DECIMAL(10,2),
+    PRIMARY KEY (cartId, productId),
     FOREIGN KEY (productId) REFERENCES product(productId)
         ON UPDATE CASCADE ON DELETE NO ACTION
 );
+
 
 CREATE TABLE warehouse (
     warehouseId         INT IDENTITY,

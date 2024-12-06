@@ -5,7 +5,7 @@
 
 
 // Connection parameters
-String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=bookstore;TrustServerCertificate=True";		
+String url = "jdbc:sqlserver://cosc304_sqlserver:1433;databaseName=orders;TrustServerCertificate=True";		
 String uid = "sa";
 String pw = "304#sa#pw";
 
@@ -34,7 +34,7 @@ String pw = "304#sa#pw";
             try (Connection conn = DriverManager.getConnection(url, uid, pw);) {
            
                 // Prepare SQL query for inserting a new customer
-                String sql = "INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     // Set the values for the SQL query parameters
@@ -49,7 +49,6 @@ String pw = "304#sa#pw";
                     ps.setString(9, country);
                     ps.setString(10, userId);
                     ps.setString(11, password); // Note: Ideally, password should be hashed before storing it
-                    ps.setInt(12, 0); // Set isAdmin to 0 (for customers)
 
                     // Execute the SQL query
                     int rowsAffected = ps.executeUpdate();
