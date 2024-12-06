@@ -205,14 +205,14 @@ INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES
 
 -- Japanese Books
 INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES 
-('Black Box:The Memoir That Sparked Japa’s #MeToo Movement', 8, 'Black Box is a riveting, sobering memoir that chronicles one woman’s struggle for justice, calling for changes to an industry—and in society at large—to ensure that future victims if sexual assault can come forward without being silenced and humiliated.', 24.48);
+('Black Box', 8, 'Black Box is a riveting, sobering memoir that chronicles one woman’s struggle for justice to ensure that future victims if sexual assault can come forward without being silenced and humiliated.', 24.48),
 ('Kafka on the Shore', 8, 'A magical realist novel by Haruki Murakami intertwining the stories of a teenage boy and an elderly man.', 24.48),
 ('Snow Country', 8, 'A novel by Yasunari Kawabata about a brief and fleeting love affair between a man and a geisha.', 24.48),
 ('The Tale of Genji', 8, 'One of the world’s first novels by Murasaki Shikibu, a classic work of Japanese literature.', 24.48);
 
 -- Tibetan Books
 INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES 
-('Bardo Thodol (The Tibetan Book of the Dead)', 11, 'The Bardo Thodol, commonly known in the West as The Tibetan Book of the Dead, is a terma text from a larger corpus of teachings, the Profound Dharma of Self-Liberation through the Intention of the Peaceful and Wrathful Ones, revealed by Karma Lingpa.', 24.48),
+('Bardo Thodol', 11, 'The Bardo Thodol, commonly known in the West as The Tibetan Book of the Dead, is abou the the Profound Dharma of Self-Liberation as revealed by Karma Lingpa.', 24.48),
 ('Tharlo', 11, 'Short Story and Film Script by Pema Tseden. The story of a Tibetan shepherd who is pulled from the security of his mountain flock into a harsh and alien urban world.', 24.48),
 ('The Tibetan Book of Living and Dying', 11, 'A spiritual guide by Sogyal Rinpoche discussing Tibetan Buddhist views of life and death.', 24.48),
 ('The Way of the Bodhisattva', 11, 'A classic text by Shantideva on the path of compassion and enlightenment in Mahayana Buddhism.', 24.48);
