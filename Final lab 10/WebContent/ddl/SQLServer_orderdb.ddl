@@ -212,17 +212,17 @@ INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES
 
 -- Tibetan Books
 INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES 
-('Bardo Thodol', 11, 'The Bardo Thodol, commonly known in the West as The Tibetan Book of the Dead, is abou the the Profound Dharma of Self-Liberation as revealed by Karma Lingpa.', 24.48),
-('Tharlo', 11, 'Short Story and Film Script by Pema Tseden. The story of a Tibetan shepherd who is pulled from the security of his mountain flock into a harsh and alien urban world.', 24.48),
-('The Tibetan Book of Living and Dying', 11, 'A spiritual guide by Sogyal Rinpoche discussing Tibetan Buddhist views of life and death.', 24.48),
-('The Way of the Bodhisattva', 11, 'A classic text by Shantideva on the path of compassion and enlightenment in Mahayana Buddhism.', 24.48);
+('Bardo Thodol', 9, 'The Bardo Thodol, commonly known in the West as The Tibetan Book of the Dead, is abou the the Profound Dharma of Self-Liberation as revealed by Karma Lingpa.', 24.48),
+('Tharlo', 9, 'Short Story and Film Script by Pema Tseden. The story of a Tibetan shepherd who is pulled from the security of his mountain flock into a harsh and alien urban world.', 24.48),
+('The Tibetan Book of Living and Dying', 9, 'A spiritual guide by Sogyal Rinpoche discussing Tibetan Buddhist views of life and death.', 24.48),
+('The Way of the Bodhisattva', 9, 'A classic text by Shantideva on the path of compassion and enlightenment in Mahayana Buddhism.', 24.48);
 
 -- Ukrainian Books
 INSERT INTO product(productName, categoryId, productDesc, productPrice) VALUES 
-('Taras Bulba', 12, 'A classic tale by Nikolai Gogol of Cossack pride, war, and betrayal in Ukraine.', 24.48),
-('The Forest Song', 12, 'A poetic drama by Lesya Ukrainka blending Ukrainian folklore with themes of love and tragedy.', 24.48),
-('The Stone Host', 12, 'A dramatic poem by Lesya Ukrainka based on Ukrainian folklore, exploring themes of duty, passion, and fate.', 24.48),
-('The White Guard', 12, 'A novel by Mikhail Bulgakov set during the Russian Civil War, focusing on a family in Kiev.', 24.48);
+('Taras Bulba', 10, 'A classic tale by Nikolai Gogol of Cossack pride, war, and betrayal in Ukraine.', 24.48),
+('The Forest Song', 10, 'A poetic drama by Lesya Ukrainka blending Ukrainian folklore with themes of love and tragedy.', 24.48),
+('The White Guard', 10, 'A novel by Mikhail Bulgakov set during the Russian Civil War, focusing on a family in Kiev.', 24.48),
+('Voroshilovgrad', 10, 'A novel by Serhiy Zhadan about life in post-Soviet Ukraine, exploring themes of identity and conflict.', 24.48);
 
 
 INSERT INTO warehouse(warehouseName) VALUES ('Main warehouse');
