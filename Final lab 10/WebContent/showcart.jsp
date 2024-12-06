@@ -4,11 +4,13 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.sql.*" %>
+<%@ include file="auth.jsp" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Your Shopping Cart</title>
+	<link rel="stylesheet" type="text/css" href="showcart.css">
 </head>
 <body>
 
