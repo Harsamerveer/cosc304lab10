@@ -1,100 +1,172 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    width: 100%;
+    min-height: 100%; /* Ensure the body can grow dynamically */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    display: block;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(9,0,77,0.65),rgba(9,0,77,0.65)), url(img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 0px;
 }
 
-h1 {
-    text-align: center;
-    color: #444;
-}
-
-.search-form {
+.most-popular {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap; /* Enable items to wrap to the next row */
+    justify-content: flex-start; /* Align items at the start */
+    gap: 20px; /* Space between items */
+    padding: 10px; /* Add spacing inside the container */
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content inside each product item */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4); /* Optional: Light background */
+    border-radius: 10px;
+    padding: 15px;
+    width: calc(25% - 20px); /* Adjust to fit 3 items per row */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
     margin-bottom: 20px;
 }
 
-.search-form input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+.product-item .add-to-cart {
+    margin-top: auto; /* Push the button to the bottom */
+    background-color: #5e17eb; /* Button color */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
     border-radius: 5px;
-    margin-right: 10px;
-    flex: 1;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 14px;
 }
 
-.search-form .btn {
-    padding: 10px 15px;
+.product-item .add-to-cart:hover {
+    background-color: #4c12c7; /* Darker shade on hover */
+}
+
+.product-item .product-image {
+    max-width: 100%;
+    max-height: 150px;
+}
+
+.product-item .product-name {
+    margin-top: 10px;
     font-size: 16px;
-    border: none;
-    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
+
+.product-item .product-category {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+}
+
+.product-item .product-price {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+}
+
+.product-item .product-sales {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    font-style: italic;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start of the nav container */
+    padding: 10px;
+    gap: 20px; /* Add spacing between elements in the nav */
+}
+
+.logo {
+    width: 180px;
     cursor: pointer;
 }
 
-.search-form .btn.submit {
-    background-color: #28a745;
+nav ul {
+   list-style: none;
+    display: flex; /* Change for flex alignment */
+    gap: 20px; /* Space between the list items */
+    margin: 0; /* Reset margin for proper spacing */
+    padding: 0; /* Reset padding for proper spacing */
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 30px 20px;
+}
+
+nav ul li a {
     color: white;
-    padding: 10px;
-    margin: 10px;
-}
-
-.search-form .btn.reset {
-    background-color: #dc3545;
-    color: white;
-    padding: 10px;
-    margin: 10px;
-}
-
-.product-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.product-table th, .product-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-.product-table th {
-    background-color: #f4f4f4;
-}
-
-.product-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-.product-link {
-    color: #007bff;
     text-decoration: none;
 }
 
-.product-link:hover {
-    text-decoration: underline;
-}
-
-.add-to-cart {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    text-decoration: none;
+.btn {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: 0;
+    outline: 0;
     border-radius: 5px;
+    background: #5e17eb;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 80px; /* Add space between the last hyperlink and button */
 }
 
-.add-to-cart:hover {
-    background-color: #0056b3;
+.searchform form {
+    display: flex;
+    align-items: left;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 70px;
+}
+
+.searchform form input {
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.content {
+    margin-top: 3%;
+    color: #fff;
+    max-width: 620px;
+    margin-left: 50px;
+}
+
+.content h1 {
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 85px;
+    margin-bottom: 15px;
+    margin-left: 0px;
 }
