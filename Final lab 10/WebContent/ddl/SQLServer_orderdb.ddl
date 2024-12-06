@@ -1,8 +1,7 @@
+DROP DATABASE IF EXISTS orders;
 CREATE DATABASE orders;
-go
-
 USE orders;
-go
+
 
 DROP TABLE review;
 DROP TABLE shipment;
@@ -75,6 +74,8 @@ CREATE TABLE product (
     PRIMARY KEY (productId),
     FOREIGN KEY (categoryId) REFERENCES category(categoryId)
 );
+
+ALTER TABLE product ADD CONSTRAINT UQ_books_title UNIQUE (productName);
 
 CREATE TABLE orderproduct (
     orderId             INT,
