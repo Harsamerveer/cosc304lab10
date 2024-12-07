@@ -417,6 +417,71 @@ UPDATE Product SET productImageURL = 'img/43.jpeg' WHERE ProductId = 43;
 UPDATE Product SET productImageURL = 'img/44.jpeg' WHERE ProductId = 44;
 UPDATE Product SET productImageURL = 'img/45.jpeg' WHERE ProductId = 45;
 
+-- Arabic Books
+UPDATE product SET productPrice = 18 WHERE productId = 1;
+UPDATE product SET productPrice = 19 WHERE productId = 2;
+UPDATE product SET productPrice = 10 WHERE productId = 3;
+UPDATE product SET productPrice = 22 WHERE productId = 4;
+
+-- Bengali Books
+UPDATE product SET productPrice = 21.35 WHERE productId = 5;
+UPDATE product SET productPrice = 25 WHERE productId = 6;
+UPDATE product SET productPrice = 30 WHERE productId = 7;
+UPDATE product SET productPrice = 40 WHERE productId = 8;
+
+-- Chinese Books
+UPDATE product SET productPrice = 97 WHERE productId = 9;
+UPDATE product SET productPrice = 31 WHERE productId = 10;
+UPDATE product SET productPrice = 15 WHERE productId = 11;
+UPDATE product SET productPrice = 20 WHERE productId = 12;
+
+-- Dutch Books
+UPDATE product SET productPrice = 25 WHERE productId = 13;
+UPDATE product SET productPrice = 30 WHERE productId = 14;
+UPDATE product SET productPrice = 35 WHERE productId = 15;
+UPDATE product SET productPrice = 40 WHERE productId = 16;
+
+-- German Books
+UPDATE product SET productPrice = 45 WHERE productId = 17;
+UPDATE product SET productPrice = 50 WHERE productId = 18;
+UPDATE product SET productPrice = 12 WHERE productId = 19;
+UPDATE product SET productPrice = 18 WHERE productId = 20;
+
+-- Hindi Books
+UPDATE product SET productPrice = 22 WHERE productId = 21;
+UPDATE product SET productPrice = 28 WHERE productId = 22;
+UPDATE product SET productPrice = 33 WHERE productId = 23;
+UPDATE product SET productPrice = 38 WHERE productId = 24;
+
+-- Korean Books
+UPDATE product SET productPrice = 42 WHERE productId = 25;
+UPDATE product SET productPrice = 47 WHERE productId = 26;
+UPDATE product SET productPrice = 14 WHERE productId = 27;
+UPDATE product SET productPrice = 19 WHERE productId = 28;
+
+-- Japanese Books
+UPDATE product SET productPrice = 24 WHERE productId = 29;
+UPDATE product SET productPrice = 29 WHERE productId = 30;
+UPDATE product SET productPrice = 34 WHERE productId = 31;
+UPDATE product SET productPrice = 39 WHERE productId = 32;
+
+-- Tibetan Books
+UPDATE product SET productPrice = 44 WHERE productId = 33;
+UPDATE product SET productPrice = 49 WHERE productId = 34;
+UPDATE product SET productPrice = 16 WHERE productId = 35;
+UPDATE product SET productPrice = 21 WHERE productId = 36;
+
+-- Ukrainian Books
+UPDATE product SET productPrice = 26 WHERE productId = 37;
+UPDATE product SET productPrice = 31 WHERE productId = 38;
+UPDATE product SET productPrice = 36 WHERE productId = 39;
+UPDATE product SET productPrice = 41 WHERE productId = 40;
+
+UPDATE product SET productPrice = 46 WHERE productId = 41;
+UPDATE product SET productPrice = 51 WHERE productId = 42;
+UPDATE product SET productPrice = 13 WHERE productId = 43;
+UPDATE product SET productPrice = 17 WHERE productId = 44;
+UPDATE product SET productPrice = 23 WHERE productId = 45;
 
 
 

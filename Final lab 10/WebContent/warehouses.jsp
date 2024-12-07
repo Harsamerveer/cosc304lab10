@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*, java.net.URLEncoder" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -65,17 +65,17 @@
     Statement stmt = null;
     ResultSet resultSet = null;
 
-        try {
-            // Load the SQL Server JDBC driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection(url, uid, pw);
-            stmt = conn.createStatement();
+    try {
+        // Load the SQL Server JDBC driver
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        conn = DriverManager.getConnection(url, uid, pw);
+        stmt = conn.createStatement();
 
-            // Query to fetch all warehouses
-            String query = "SELECT warehouseId, warehouseName FROM warehouse";
+        // Query to fetch all warehouses
+        String query = "SELECT warehouseId, warehouseName FROM warehouse";
 
-            // Execute the query
-            resultSet = stmt.executeQuery(query);
+        // Execute the query
+        resultSet = stmt.executeQuery(query);
     %>
     <table>
         <tr>
@@ -85,26 +85,31 @@
         <%
             // Loop through the result set and display the data
             while (resultSet.next()) {
+                int warehouseId = resultSet.getInt("warehouseId");
+                String warehouseName = resultSet.getString("warehouseName");
+
+                // Construct the dynamic link for each warehouse
+                String warehouseLink = "warehouseDetails.jsp?id=" + warehouseId + "&name=" + URLEncoder.encode(warehouseName, "UTF-8");
         %>
         <tr>
-            <td><%= resultSet.getInt("warehouseId") %></td>
-            <td><%= resultSet.getString("warehouseName") %></td>
+            <td><%= warehouseId %></td>
+            <td><a href="<%= warehouseLink %>"><%= warehouseName %></a></td>
         </tr>
         <%
             }
         %>
     </table>
     <%
-        } catch (Exception e) {
-            out.println("<p style='color:red; text-align:center;'>Error: " + e.getMessage() + "</p>");
-        } finally {
-            // Close resources
-            if (resultSet != null) try { resultSet.close(); } catch (SQLException ignore) {}
-            if (stmt != null) try { stmt.close(); } catch (SQLException ignore) {}
-            if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
-        }
+    } catch (Exception e) {
+        out.println("<p style='color:red; text-align:center;'>Error: " + e.getMessage() + "</p>");
+    } finally {
+        // Close resources
+        if (resultSet != null) try { resultSet.close(); } catch (SQLException ignore) {}
+        if (stmt != null) try { stmt.close(); } catch (SQLException ignore) {}
+        if (conn != null) try { conn.close(); } catch (SQLException ignore) {}
+    }
     %>
-      <!-- Admin Dashboard Button -->
-      <a href="admin.jsp" class="button">Admin Dashboard</a>
+    <!-- Admin Dashboard Button -->
+    <a href="admin.jsp" class="button">Admin Dashboard</a>
 </body>
 </html>
