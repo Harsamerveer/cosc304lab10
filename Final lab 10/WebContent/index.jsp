@@ -129,7 +129,7 @@
         Statement stmt= con.createStatement();)
          {
             //Select the top three books in the sales!
-            String SQL = "SELECT TOP 3 productId, SUM(quantity) AS totalSale FROM orderproduct GROUP BY productId ORDER BY totalSale DESC";
+            String SQL = "SELECT TOP 4 productId, SUM(quantity) AS totalSale FROM orderproduct GROUP BY productId ORDER BY totalSale DESC";
             String SQL2 = "SELECT * FROM product P JOIN category C ON P.categoryId = C.categoryId WHERE productId = ?";
 
             ResultSet rst= stmt.executeQuery(SQL);
@@ -174,7 +174,6 @@
             }
             %>
         </div>
-        <h2>Recommended for you</h2>
     </div>
 </div>
 <%

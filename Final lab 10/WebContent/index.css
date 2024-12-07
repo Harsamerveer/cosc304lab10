@@ -137,9 +137,9 @@ nav ul li a {
 
 
 .content{
-    margin-top: 3%;
+    margin-top: 0%;
     color: #fff;
-    max-width: 620px;
+    max-width: 820px;
     margin-left: 50px;
 }
 
@@ -147,12 +147,14 @@ nav ul li a {
     font-size: 65px;
     font-weight: 700;
     line-height: 85px;
-    margin-bottom: 15px;
     margin-left: 0px;
 }
 
 /* Flex container to hold both the dropdown and search form side by side */
 .dropdown-search-container {
+    margin-left: 250px;
+    padding-left: 140px;
+    padding-top: 50px; /* Add space between the nav and the dropdown/search bar */
     display: flex;
     align-items: center; /* Vertically align both items */
     gap: 20px; /* Space between the dropdown and search bar */
