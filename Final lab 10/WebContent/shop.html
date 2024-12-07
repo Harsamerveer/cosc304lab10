@@ -6,23 +6,23 @@
    <link rel="stylesheet" href="index.css">
    <title>Mondo Books</title>
    <script>
-	// JavaScript function to toggle the dropdown
-	function myFunction() {
-		document.getElementById("myDropdown").classList.toggle("show");
-	}
+    // JavaScript function to toggle the dropdown
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
 
-	// Close the dropdown if the user clicks anywhere outside of it
-	window.onclick = function(event) {
-		if (!event.target.matches('.dropbtn')) {
-			var dropdowns = document.getElementsByClassName("dropdown-content");
-			for (var i = 0; i < dropdowns.length; i++) {
-				var openDropdown = dropdowns[i];
-				if (openDropdown.classList.contains('show')) {
-					openDropdown.classList.remove('show');
-				}
-			}
-		}
-	}
+    // Close the dropdown if the user clicks anywhere outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
 </script>
 </head>
 <body>
@@ -32,6 +32,37 @@
 
 <!-- Header-specific styles -->
 <style>
+    .flow-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .flow-text {
+        font-size: 48px;
+        display: inline-block;
+        white-space: nowrap;
+        animation: flowAnimation 5s infinite;
+        animation-delay: calc(var(--i) * -1s);
+        padding: 10px;
+        color: whitesmoke;
+    }
+
+    @keyframes flowAnimation {
+        0% {
+            transform: translateX(100%);
+        }
+        50% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
     nav {
         font-family: 'Poppins', sans-serif;
         background-color: black;
@@ -57,12 +88,12 @@
     }
 
     nav button {
-		margin-left: 8px;
+        margin-left: 8px;
         background-color: transparent;
         border: 1px solid white;
         padding: 5px 20px;
         cursor: pointer;
-		font-size: 15px;
+        font-size: 15px;
     }
 
     nav button a {
@@ -82,14 +113,14 @@
         margin-right: 20px;
     }
 
-    /* Style for the container holding the dropdown and search bar */
+    /* Adjusted style for search-container */
     .search-container {
-		margin-top: -220px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         gap: 10px; /* Adjust the gap between the dropdown and the search bar */
-		margin-bottom: 100px;
+        margin-top: 50px; /* Adjusted margin-top for better positioning */
+        margin-bottom: 50px; /* Add spacing from content below */
     }
 
     .searchform input {
@@ -100,7 +131,7 @@
     /* Style for the dropdown */
     .dropdown {
         position: relative;
-		margin-right: 35px;
+        margin-right: 35px;
     }
 
     .dropdown-content {
@@ -141,6 +172,11 @@
     .content {
         margin-top: 20px;
         max-width: 800px; /* Adjust to control the width of the content */
+    }
+
+    /* Optional: add margin to the h1 to ensure space between it and the search bar */
+    h1 {
+        margin-top: 0px; /* Ensure there's enough space between the search bar and h1 */
     }
 </style>
 
@@ -192,6 +228,18 @@
     <div class="content">
         <h1>Books in our heritage language</h1>
         <p><br> Mondo means "World" in Esperanto. <br><br> When you pick a book from Mondo, you join us in preserving languages in this world.</p>
+    </div>
+
+    <div class="flow-container">
+        <div class="flow-text" style="--i:1">العالم</div>  <!-- Arabic: "World" -->
+        <div class="flow-text" style="--i:2">Світ</div>    <!-- Ukrainian: "World" -->
+        <div class="flow-text" style="--i:3">世界</div>     <!-- Chinese: "World" -->
+        <div class="flow-text" style="--i:4">विश्व</div>    <!-- Hindi (Devanagari): "World" -->
+        <div class="flow-text" style="--i:5">세상</div>     <!-- Korean: "World" -->
+        <div class="flow-text" style="--i:6">โลก</div>      <!-- Thai: "World" -->
+        <div class="flow-text" style="--i:7">विश्व</div>    <!-- Bengali: "World" -->
+        <div class="flow-text" style="--i:8">Жаңа әлем</div>  <!-- Kazakh: "World" -->
+        <div class="flow-text" style="--i:9">โลก</div>      <!-- Thai: "World" -->
     </div>
 </div>
 

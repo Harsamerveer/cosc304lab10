@@ -19,6 +19,7 @@
             height: auto;
             object-fit: contain; /* Maintains aspect ratio */
         }
+        
     </style>
     
    <script>
