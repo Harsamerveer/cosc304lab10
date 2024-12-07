@@ -20,6 +20,35 @@
             object-fit: contain;
         }
     </style>
+
+<script>
+    // JavaScript function to toggle the dropdown
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+
+    // Close the dropdown if the user clicks anywhere outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    // JavaScript function to handle filtering by category
+    function filterCategory(category) {
+        var currentUrl = window.location.href.split('?')[0]; // Get the current URL without any query parameters
+        window.location.href = currentUrl + "?category=" + encodeURIComponent(category); // Redirect to the same page with the selected category as a query parameter
+    }
+</script>
+
+
 </head>
 <body>
     
@@ -28,14 +57,33 @@
         <form method="get" action="listprod.jsp" class="search-form">
             <input type="text" name="productName" size="50" placeholder="Enter product name...">
             <button type="submit" class="btn submit">Search</button>
+            <!-- Dropdown for Language Selection -->
+            
             <button type="reset" class="btn reset">Reset</button>
         </form>
+
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Select Language</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#" onclick="filterCategory('Arabic')">Arabic</a>
+                <a href="#" onclick="filterCategory('Bengali')">Bengali</a>
+                <a href="#" onclick="filterCategory('Chinese')">Chinese</a>
+                <a href="#" onclick="filterCategory('Dutch')">Dutch</a>
+                <a href="#" onclick="filterCategory('German')">German</a>
+                <a href="#" onclick="filterCategory('Hindi')">Hindi</a>
+                <a href="#" onclick="filterCategory('Korean')">Korean</a>
+                <a href="#" onclick="filterCategory('Japanese')">Japanese</a>
+                <a href="#" onclick="filterCategory('Tibetan')">Tibetan</a>
+                <a href="#" onclick="filterCategory('Ukrainian')">Ukrainian</a>
+            </div>
+        </div>
 
     <div class="container">
         <div class="book-list">
             <% 
-            // Get product name to search for
+            // Get product name and category to filter/search
             String name = request.getParameter("productName");
+            String category = request.getParameter("category");
 
             // Load SQL Server driver
             try {
@@ -51,13 +99,22 @@
 
             try (Connection con = DriverManager.getConnection(url, uid, pw)) {
                 String SQL = "SELECT * FROM product P JOIN category C ON P.categoryId = C.categoryId WHERE productName LIKE ?";
-                PreparedStatement pstmt = con.prepareStatement(SQL);
+                String SQL2 = "SELECT * FROM product P JOIN category C ON P.categoryId = C.categoryId WHERE categoryName = ?";
+                
+                PreparedStatement pstmt = con.prepareStatement(SQL);//filter product name
+                PreparedStatement pstmt2 = con.prepareStatement(SQL2);//filter category
 
                 // If no search term is provided, fetch all products
                 if (name == null || name.trim().isEmpty()) {
                     pstmt.setString(1, "%");
                 } else {
                     pstmt.setString(1, "%" + name + "%");
+                }
+
+                // If a category is selected, filter by category
+                if (category != null && !category.trim().isEmpty()) {
+                    pstmt2.setString(1, category);
+                    pstmt = pstmt2;
                 }
 
                 ResultSet rst = pstmt.executeQuery();
