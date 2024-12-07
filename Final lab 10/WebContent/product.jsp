@@ -166,10 +166,10 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);
         %>
         <div class="container">
             <div class="product-details">
-            <p>Product Id: <%= productId %></p>
-            <p>Product Name: <%= productName %></p>
-            <p>Price: $<%= productPrice %></p>
-            <p>Description: <%= productDesc %></p>
+                <h2><b><%= productName %></b></h2>
+                <p style="color: rgb(190, 134, 29);">Price: $<%= productPrice %></p>
+                <p>Description: <%= productDesc %></p>
+                
             <%
             // Retrieve the productImageURL from the ResultSet
             String productImageURL = rs.getString("productImageURL"); 
