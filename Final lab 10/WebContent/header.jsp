@@ -63,7 +63,7 @@
     <!-- Navigation Links -->
     <ul>
         <li><a href="index.jsp">Home</a></li>
-        <li><a href="listprod.jsp">Browse All Books</a></li>
+        <li><a href="listprod.jsp">Browse All</a></li>
         <li><a href="listorder.jsp">List All Orders</a></li>
         <li><a href="customer.jsp">My Profile</a></li>
         <li><a href="admin.jsp">Administrators</a></li>

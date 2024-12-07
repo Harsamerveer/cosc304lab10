@@ -116,6 +116,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);
 } 
 
 %>
-
+<!-- Admin Dashboard Button -->
+<a href="admin.jsp" class="button">Admin Dashboard</a>
 </body>
 </html>
