@@ -5,9 +5,10 @@
 <html>
 <head>
 <title>Harsamerveer Singh Grocery Order List</title>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
-
+    <%@ include file="header.jsp" %>
 
 
 <h1>Order List</h1>
