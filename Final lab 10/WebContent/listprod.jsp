@@ -52,8 +52,28 @@
 </head>
 <body>
     <%@ include file="header.jsp" %>
-    
+  
+    <div class="container">
+          
     <h1>Search for the products you want to buy:</h1>
+
+    <div class="search-container">
+
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Select Language</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#" onclick="filterCategory('Arabic')">Arabic</a>
+            <a href="#" onclick="filterCategory('Bengali')">Bengali</a>
+            <a href="#" onclick="filterCategory('Chinese')">Chinese</a>
+            <a href="#" onclick="filterCategory('Dutch')">Dutch</a>
+            <a href="#" onclick="filterCategory('German')">German</a>
+            <a href="#" onclick="filterCategory('Hindi')">Hindi</a>
+            <a href="#" onclick="filterCategory('Korean')">Korean</a>
+            <a href="#" onclick="filterCategory('Japanese')">Japanese</a>
+            <a href="#" onclick="filterCategory('Tibetan')">Tibetan</a>
+            <a href="#" onclick="filterCategory('Ukrainian')">Ukrainian</a>
+        </div>
+    </div>
 
         <form method="get" action="listprod.jsp" class="search-form">
             <input type="text" name="productName" size="50" placeholder="Enter product name...">
@@ -63,23 +83,8 @@
             <button type="reset" class="btn reset">Reset</button>
         </form>
 
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Select Language</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="#" onclick="filterCategory('Arabic')">Arabic</a>
-                <a href="#" onclick="filterCategory('Bengali')">Bengali</a>
-                <a href="#" onclick="filterCategory('Chinese')">Chinese</a>
-                <a href="#" onclick="filterCategory('Dutch')">Dutch</a>
-                <a href="#" onclick="filterCategory('German')">German</a>
-                <a href="#" onclick="filterCategory('Hindi')">Hindi</a>
-                <a href="#" onclick="filterCategory('Korean')">Korean</a>
-                <a href="#" onclick="filterCategory('Japanese')">Japanese</a>
-                <a href="#" onclick="filterCategory('Tibetan')">Tibetan</a>
-                <a href="#" onclick="filterCategory('Ukrainian')">Ukrainian</a>
-            </div>
-        </div>
+    </div>
 
-    <div class="container">
         <div class="book-list">
             <% 
             // Get product name and category to filter/search

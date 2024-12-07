@@ -5,6 +5,10 @@ html, body {
     min-height: 100%; /* Ensure the body can grow dynamically */
     overflow-x: hidden; /* Prevent horizontal scrolling */
     display: block;
+    background: linear-gradient(rgba(9,0,77,0.65), rgba(9,0,77,0.65)), url(img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -20,8 +24,8 @@ html, body {
 h1 {
     text-align: center;
     margin: 20px auto;
+    color: white;
 }
-
 
 
 .book-list {
@@ -159,27 +163,25 @@ nav ul li a {
     margin-left: 0px;
 }
 
+/* Align the dropdown, search input, and buttons horizontally */
 .search-container {
     display: flex;
-    justify-content: flex-start; /* Aligns dropdown and form to the left */
-    align-items: center; /* Vertically aligns the dropdown and search form */
+    justify-content: space-between; /* Align items with space between */
+    align-items: center; /* Vertically center the elements */
     margin-bottom: 20px;
 }
 
-
-
+/* Dropdown and search bar */
 .dropdown {
-    position: relative;
     display: flex;
-    align-items: center; /* Vertically centers the dropdown button */
-    margin-right: 20px; /* Space between the dropdown and the search form */
+    align-items: center;
 }
 
 .dropbtn {
     background-color: #3498DB;
     color: white;
     padding: 16px;
-    margin-left: 30px;
+    margin-left: 180px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -222,28 +224,33 @@ nav ul li a {
 }
 
 .search-form {
+    margin-right: 150px;
     display: flex;
-    justify-content: flex-start;
-    align-items: center; /* Vertically center the input and buttons */
+    justify-content: flex-end; /* Align buttons to the right */
+    align-items: center; /* Vertically align the buttons */
 }
 
+/* Make the search bar and buttons align horizontally */
 .search-form input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-right: 10px;
-    width: 600px;
+    width: 600px; /* Adjust width of search input */
 }
 
+/* Align buttons */
 .search-form .btn {
     padding: 10px 15px;
     font-size: 16px;
+    margin-left: 40px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
+/* Specific styling for the submit and reset buttons */
 .search-form .btn.submit {
     background-color: #28a745;
     color: white;
@@ -252,4 +259,5 @@ nav ul li a {
 .search-form .btn.reset {
     background-color: #dc3545;
     color: white;
+    margin-right: 40px;
 }
