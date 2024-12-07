@@ -27,58 +27,171 @@
 </head>
 <body>
 
+<!-- Link to Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Header-specific styles -->
+<style>
+    nav {
+        font-family: 'Poppins', sans-serif;
+        background-color: black;
+        color: white;
+        padding: 10px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover {
+        color: #ccc;
+    }
+
+    nav button {
+        background-color: transparent;
+        border: 1px solid white;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    nav button a {
+        color: white;
+        text-decoration: none;
+    }
+
+    nav button a:hover {
+        color: #ccc;
+    }
+
+    .logo {
+        margin-bottom: 5px;
+        margin-left: 30px;
+        height: 80px;
+        width: fit-content;
+        margin-right: 20px;
+    }
+
+    /* Style for the container holding the dropdown and search bar */
+    .search-container {
+		margin-top: -220px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px; /* Adjust the gap between the dropdown and the search bar */
+		margin-bottom: 100px;
+    }
+
+    .searchform input {
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    /* Style for the dropdown */
+    .dropdown {
+        position: relative;
+		margin-right: 35px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .show {
+        display: block;
+    }
+
+    /* Center content inside the container */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Style for the content section */
+    .content {
+        margin-top: 20px;
+        max-width: 800px; /* Adjust to control the width of the content */
+    }
+</style>
+
+<!-- Header HTML with Navigation and Dropdown -->
+<nav>
+    <!-- Logo -->
+    <img src="img/logotypemon.png" alt="Mondo Books" class="logo">
+    
+    <!-- Navigation Links -->
+    <ul>
+        <li><a href="index.jsp">Home</a></li>
+        <li><a href="listprod.jsp">Begin Shopping</a></li>
+        <li><a href="listorder.jsp">List All Orders</a></li>
+        <li><a href="customer.jsp">My Profile</a></li>
+        <li><a href="admin.jsp">Administrators</a></li>
+    </ul>
+
+    <!-- Cart Button -->
+    <button><a href="showcart.jsp">Cart</a></button>
+</nav>
+
 <div class="container">
+    <div class="search-container">
+        <!-- Dropdown for Language Selection -->
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Select Language</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="listprod.jsp?category=Arabic">Arabic</a>
+                <a href="listprod.jsp?category=Bengali">Bengali</a>
+                <a href="listprod.jsp?category=Chinese">Chinese</a>
+                <a href="listprod.jsp?category=Dutch">Dutch</a>
+                <a href="listprod.jsp?category=German">German</a>
+                <a href="listprod.jsp?category=Hindi">Hindi</a>
+                <a href="listprod.jsp?category=Korean">Korean</a>
+                <a href="listprod.jsp?category=Japanese">Japanese</a>
+                <a href="listprod.jsp?category=Tibetan">Tibetan</a>
+                <a href="listprod.jsp?category=Ukrainian">Ukrainian</a>
+            </div>
+        </div>
 
-	<nav>
-		<ul>
-			<li><a href="listprod.jsp">Begin Shopping</a></li>
-			<li><a href="listorder.jsp">List All Orders</a></li>
-			<li><a href="customer.jsp">My Profile</a></li>
-			<li><a href="admin.jsp">Administrators</a></li>
-		</ul>
-		<button class="btn"> <a href="login.jsp">Login </a></button>
-	</nav>
-<div style="display: flex; justify-content: center; align-items: center; height: 100px; text-align: center;">
+        <!-- Search Bar -->
+        <div class="searchform">
+            <form method="get" action="listprod.jsp">
+                <input type="text" placeholder="Search" name="productName" size="50">
+            </form>
+        </div>
+    </div>
 
+    <div class="content">
+        <h1>Books in our heritage language</h1>
+        <p><br> Mondo means "World" in Esperanto. <br><br> When you pick a book from Mondo, you join us in preserving languages in this world.</p>
+    </div>
 </div>
 
-	<nav>
-		<img src="img/logotypemon.png" alt="Mondo Books" class="logo">
-		<li><div class = "searchform">
-			<form method="get" action="listprod.jsp">
-			<input type="text" placeholder="Search  " name="productName" size="50">
-			<!-- <input type="submit" value="Go"> -->
-		</form>
-	</div>
-	</li>
-	<!-- Dropdown for Language Selection -->
-	<div class="dropdown">
-		<button onclick="myFunction()" class="dropbtn">Select Language</button>
-		<div id="myDropdown" class="dropdown-content">
-			<a href="listprod.jsp?category=Arabic">Arabic</a>
-			<a href="listprod.jsp?category=Bengali">Bengali</a>
-			<a href="listprod.jsp?category=Chinese">Chinese</a>
-			<a href="listprod.jsp?category=Dutch">Dutch</a>
-			<a href="listprod.jsp?category=German">German</a>
-			<a href="listprod.jsp?category=Hindi">Hindi</a>
-			<a href="listprod.jsp?category=Korean">Korean</a>
-			<a href="listprod.jsp?category=Japanese">Japanese</a>
-			<a href="listprod.jsp?category=Tibetan">Tibetan</a>
-			<a href="listprod.jsp?category=Ukrainian">Ukrainian</a>
-		</div>
-	 </div>
-	 
-	</nav>
-
-
-
-	<div class ="content">
-	
-		
-		<h1>Books in our heritage language</h1>
-		<p><br> Mondo means "World" in Esperanto. <br><br>  When you pick a book from Mondo, you join us in perserving languages in this world.</p>
-		
-	</div>
-</div>
 </body>
 </html>
