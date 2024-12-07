@@ -46,51 +46,41 @@
 <%@ include file="auth.jsp"%>
 <%@ page import="java.text.NumberFormat" %>
 <%@ include file="jdbc.jsp" %>
+<%@ include file="header.jsp" %>
+
 
 <div class="container">
-    <nav>
-        <!-- Logo -->
-        <img src="img/logotypemon.png" alt="Mondo Books" class="logo">
-        
-        <!-- Navigation Links -->
-        <ul>
-            <li><a href="listprod.jsp">Begin Shopping</a></li>
-            <li><a href="listorder.jsp">List All Orders</a></li>
-            <li><a href="customer.jsp">My Profile</a></li>
-            <li><a href="admin.jsp">Administrators</a></li>
-            <li><a href="logout.jsp">Log out</a></li>
-        </ul>
-        
-        <!-- Cart Button -->
-        <button class="btn"><a href="showcart.jsp">Cart</a></button>
-        
+   
 
     </nav>
 
-       
-        <li>
-            <div class="searchform">
-                <form method="get" action="listprod.jsp">
-                    <input type="text" placeholder="Search" name="productName" size="50">
-                </form>
-            </div>
-        </li>
-        <!-- Dropdown for Language Selection -->
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Select Language</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="listprod.jsp?category=Arabic">Arabic</a>
-                <a href="listprod.jsp?category=Bengali">Bengali</a>
-                <a href="listprod.jsp?category=Chinese">Chinese</a>
-                <a href="listprod.jsp?category=Dutch">Dutch</a>
-                <a href="listprod.jsp?category=German">German</a>
-                <a href="listprod.jsp?category=Hindi">Hindi</a>
-                <a href="listprod.jsp?category=Korean">Korean</a>
-                <a href="listprod.jsp?category=Japanese">Japanese</a>
-                <a href="listprod.jsp?category=Tibetan">Tibetan</a>
-                <a href="listprod.jsp?category=Ukrainian">Ukrainian</a>
-            </div>
+       <!-- Dropdown for Language Selection and Search Form -->
+<div class="dropdown-search-container">
+    <!-- Dropdown for Language Selection -->
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Select Language</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="listprod.jsp?category=Arabic">Arabic</a>
+            <a href="listprod.jsp?category=Bengali">Bengali</a>
+            <a href="listprod.jsp?category=Chinese">Chinese</a>
+            <a href="listprod.jsp?category=Dutch">Dutch</a>
+            <a href="listprod.jsp?category=German">German</a>
+            <a href="listprod.jsp?category=Hindi">Hindi</a>
+            <a href="listprod.jsp?category=Korean">Korean</a>
+            <a href="listprod.jsp?category=Japanese">Japanese</a>
+            <a href="listprod.jsp?category=Tibetan">Tibetan</a>
+            <a href="listprod.jsp?category=Ukrainian">Ukrainian</a>
         </div>
+    </div>
+
+    <!-- Search Form -->
+    <div class="searchform">
+        <form method="get" action="listprod.jsp">
+            <input type="text" placeholder="Search" name="productName" size="50">
+        </form>
+    </div>
+</div>
+
     </nav>
 
     <%
@@ -105,6 +95,17 @@
     categoryColors.put("Ukrainian", "yellow");
     // Add other categories as needed
 %>
+
+
+<div style="display: flex; justify-content: center; align-items: center; height: 100px; text-align: center;">
+    <%
+    // Display current user login information
+    String userName = (String) session.getAttribute("authenticatedUser");
+    if (userName != null) {
+        out.println("<p style='color: white; font-family: \"Poppins\", sans-serif; font-weight: 100; font-size: 30px;'>Welcome, " + userName + "</p>");
+    }
+    %>
+</div>
 
     <div class="content">
         <h2>Most popular</h2>
@@ -153,6 +154,7 @@
                 // Get the color for the category
                 String categoryColor = categoryColors.getOrDefault(categoryName, "black"); // Default to black if no color found
 
+                
                 if (productImageURL != null && !productImageURL.isEmpty()) {
                     %>
                     <!-- Displaying image with restricted size -->
