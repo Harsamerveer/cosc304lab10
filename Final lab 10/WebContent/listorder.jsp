@@ -13,6 +13,13 @@
 
 <h1>Order List</h1>
 
+<style>
+    nav {
+        font-family: 'Poppins', sans-serif;
+        background-color: black;
+        color: white;
+    }
+    </style>
 <%
 try {
     // Load driver class
@@ -42,6 +49,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);
         String totalAmount = currFormat.format(rst.getDouble("totalAmount"));
       
         %>
+        
         <div>
             <table border="1">
                 <tr>
@@ -85,8 +93,10 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);
                 productsResultSet.close();
                 productsStmt.close();
                 %>
+                
             </table>
         </div>
+        
         <%
     }
 } catch (SQLException ex) {

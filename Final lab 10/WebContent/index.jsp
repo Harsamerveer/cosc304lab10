@@ -90,7 +90,7 @@
     categoryColors.put("Arabic", "darkgreen");
     categoryColors.put("Chinese", "darkred");
     categoryColors.put("German", "orange");
-    categoryColors.put("Japanese", "darkyellow");
+    categoryColors.put("Japanese", "#f542a1");
     categoryColors.put("Tibetan", "blue");
     categoryColors.put("Ukrainian", "yellow");
     // Add other categories as needed
