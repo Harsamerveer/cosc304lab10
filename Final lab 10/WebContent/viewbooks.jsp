@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <h1>Search for the products you want to buy:</h1>
+    <h1>Search for the products you want to remove:</h1>
 
 
 	<form method="get" action="viewbooks.jsp">
