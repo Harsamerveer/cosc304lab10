@@ -8,7 +8,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
+<title>Order Summary</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+    h2 {
+        color: #2c3e50;
+        text-align: center;
+    }
+    table {
+        width: 80%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #2c3e50;
+        color: #fff;
+    }
+    td {
+        background-color: #f9f9f9;
+    }
+    td.align-right {
+        text-align: right;
+    }
+    .order-total {
+        font-weight: bold;
+        background-color: #f0f0f0;
+    }
+    .error {
+        color: red;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
 </head>
 <body>
 
