@@ -21,59 +21,6 @@ h1 {
     margin: 20px auto;
 }
 
-/* Reset default dropdown behavior */
-/* Reset default dropdown behavior */
-.dropdown-content {
-    display: none; /* Keep the dropdown hidden by default */
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    width: 100%;
-    top: 100%; /* Position the dropdown below the button */
-    opacity: 0; /* Make it invisible */
-    visibility: hidden; /* Ensure it's not interactive */
-    transition: opacity 0.2s ease, visibility 0.2s ease; /* Smooth transition */
-}
-
-.show {
-    display: block; /* Show the dropdown when toggled */
-    opacity: 1; /* Make it visible */
-    visibility: visible; /* Make it interactive */
-}
-
-
-.dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-}
-
-.dropbtn:hover {
-    background-color: #2980B9;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
 
 
 .book-list {
@@ -195,11 +142,88 @@ nav ul li a {
     margin-left: 80px; /* Add space between the last hyperlink and button */
 }
 
+
+.content {
+    margin-top: 3%;
+    color: #fff;
+    max-width: 620px;
+    margin-left: 50px;
+}
+
+.content h1 {
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 85px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns dropdown and form to the left */
+    align-items: center; /* Vertically aligns the dropdown and search form */
+    margin-bottom: 20px;
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center; /* Vertically centers the dropdown button */
+    margin-right: 20px; /* Space between the dropdown and the search form */
+}
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    margin-left: 30px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle; /* Align the dropdown button with other elements */
+}
+
+.dropdown-content {
+    display: none; /* Keep the dropdown hidden by default */
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    width: 100%;
+    top: 100%; /* Position the dropdown below the button */
+    opacity: 0; /* Make it invisible */
+    visibility: hidden; /* Ensure it's not interactive */
+    transition: opacity 0.2s ease, visibility 0.2s ease; /* Smooth transition */
+}
+
+
+
+.show {
+    display: block; /* Show the dropdown when toggled */
+    opacity: 1; /* Make it visible */
+    visibility: visible; /* Make it interactive */
+}
+
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
 .search-form {
     display: flex;
-    justify-content: center; /* Align the content to the right */
-    margin-bottom: 20px;
-    gap: 5px; /* Add space between the buttons */
+    justify-content: flex-start;
+    align-items: center; /* Vertically center the input and buttons */
 }
 
 .search-form input {
@@ -228,20 +252,3 @@ nav ul li a {
     background-color: #dc3545;
     color: white;
 }
-
-
-.content {
-    margin-top: 3%;
-    color: #fff;
-    max-width: 620px;
-    margin-left: 50px;
-}
-
-.content h1 {
-    font-size: 65px;
-    font-weight: 700;
-    line-height: 85px;
-    margin-bottom: 15px;
-    margin-left: 0px;
-}
-

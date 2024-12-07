@@ -47,10 +47,7 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ include file="jdbc.jsp" %>
 
-
-
 <div class="container">
-
     <nav>
         <ul>
             <li><a href="listprod.jsp">Begin Shopping</a></li>
@@ -85,20 +82,19 @@
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Select Language</button>
             <div id="myDropdown" class="dropdown-content">
-                <a href="#">Arabic</a>
-                <a href="#">Bengali</a>
-                <a href="#">Chinese</a>
-                <a href="#">Dutch</a>
-                <a href="#">German</a>
-                <a href="#">Hindi</a>
-                <a href="#">Korean</a>
-                <a href="#">Japanese</a>
-                <a href="#">Tibetan</a>
-                <a href="#">Ukrainian</a>
+                <a href="listprod.jsp?category=Arabic">Arabic</a>
+                <a href="listprod.jsp?category=Bengali">Bengali</a>
+                <a href="listprod.jsp?category=Chinese">Chinese</a>
+                <a href="listprod.jsp?category=Dutch">Dutch</a>
+                <a href="listprod.jsp?category=German">German</a>
+                <a href="listprod.jsp?category=Hindi">Hindi</a>
+                <a href="listprod.jsp?category=Korean">Korean</a>
+                <a href="listprod.jsp?category=Japanese">Japanese</a>
+                <a href="listprod.jsp?category=Tibetan">Tibetan</a>
+                <a href="listprod.jsp?category=Ukrainian">Ukrainian</a>
             </div>
         </div>
     </nav>
-
 
     <%
     // Define the color mapping for categories
@@ -112,7 +108,6 @@
     categoryColors.put("Ukrainian", "yellow");
     // Add other categories as needed
 %>
-
 
     <div class="content">
         <h2>Most popular</h2>
@@ -173,7 +168,6 @@
                     <p class="product-sales">
                         <%= totalSale %> <span>copies sold!</span>
                     </p>
-                   
                 </div>
                     <% 
                     }  
