@@ -24,22 +24,22 @@
 <script>
     // JavaScript function to toggle the dropdown
     function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-    
+    var dropdown = document.getElementById("myDropdown");
+    dropdown.classList.toggle("show");
+}
 
-    // Close the dropdown if the user clicks anywhere outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
+// Close the dropdown if the user clicks anywhere outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
             }
         }
     }
+}
 
     // JavaScript function to handle filtering by category
     function filterCategory(category) {

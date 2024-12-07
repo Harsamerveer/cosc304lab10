@@ -189,28 +189,28 @@ nav ul li a {
     vertical-align: middle; /* Align the dropdown button with other elements */
 }
 
+
+
 .dropdown-content {
-    display: none; /* Keep the dropdown hidden by default */
+    display: none; /* Keep it hidden by default */
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    width: 100%;
-    top: 100%; /* Position the dropdown below the button */
-    opacity: 0; /* Make it invisible */
-    visibility: hidden; /* Ensure it's not interactive */
-    transition: opacity 0.2s ease, visibility 0.2s ease; /* Smooth transition */
+    z-index: 9999; /* Ensure the dropdown is on top */
+    width: 8%;
+    top: 28%; /* Position below the button */
+    left: 11.5%;
+    opacity: 0; /* Make it invisible initially */
+    visibility: hidden; /* Make it non-interactive initially */
+    transition: opacity 0.2s ease, visibility 0.2s ease;
 }
-
-
 
 .show {
-    display: block; /* Show the dropdown when toggled */
-    opacity: 1; /* Make it visible */
-    visibility: visible; /* Make it interactive */
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
-
 
 .dropdown-content a {
     color: black;
