@@ -5,18 +5,126 @@
 
 <html>
 <head>
-    <title>Group 14 - Product Information</title>
+    
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- CSS to limit image size -->
     <style>
-        img.product-image {
-            max-width: 300px; /* Max width for the image */
-            max-height: 300px; /* Max height for the image */
-            width: auto;
-            height: auto;
-            object-fit: contain; /* Maintains aspect ratio */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
         }
+    
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .product-details {
+            text-align: center;
+        }
+    
+        .product-details img {
+            margin: 15px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    
+        .product-details p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    
+        .product-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+    
+        .product-actions a {
+            text-decoration: none;
+            background: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+    
+        .product-actions a:hover {
+            background: #0056b3;
+        }
+        img.product-image {
+            max-width: 300px; /* Adjust this value for the maximum width */
+            max-height: 300px; /* Adjust this value for the maximum height */
+            width: auto; /* Ensures aspect ratio is maintained */
+            height: auto; /* Ensures aspect ratio is maintained */
+            object-fit: contain; /* Keeps the image content within bounds without distortion */
+            border: 1px solid #ddd; /* Optional: Add a border for better visuals */
+            border-radius: 8px; /* Optional: Rounded corners */
+            margin: 10px 0; /* Optional: Add spacing around the image */
+            }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+        margin: 10% auto;
+        display: block;
+        max-width: 80%;
+        border-radius: 8px;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    </style>
+    <script>
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const images = document.querySelectorAll('.product-image');
+            const closeModal = document.querySelector('.close');
+    
+            images.forEach(img => {
+                img.onclick = function () {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                }
+            });
+    
+            closeModal.onclick = function () {
+                modal.style.display = "none";
+            };
+    
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+        });
+    </script>
     </style>
 </head>
 <body>
@@ -56,7 +164,8 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);
         String addToCartLink = "addcart.jsp?id=" + productId + "&name=" + productName + "&price=" + productPrice + "&desc=" + productDesc;
         System.out.println("Product description: " + productDesc);
         %>
-		<div>
+        <div class="container">
+            <div class="product-details">
             <p>Product Id: <%= productId %></p>
             <p>Product Name: <%= productName %></p>
             <p>Price: $<%= productPrice %></p>
@@ -71,12 +180,17 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);
             <% 
             }            
             %> 
-            <br>
-            <br>
+            <div class="product-actions">
             <a href="<%= addToCartLink %>">Add to cart</a>
             <h5><a href="listprod.jsp">Continue Shopping</a></h5>
-		</div>
-	<%
+        </div>
+    </div>
+</div>                <!-- Modal for Image -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+            <%
     }
 
     rs.close();
