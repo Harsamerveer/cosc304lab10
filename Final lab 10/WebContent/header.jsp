@@ -62,6 +62,7 @@
     
     <!-- Navigation Links -->
     <ul>
+        <li><a href="index.jsp">Home</a></li>
         <li><a href="listprod.jsp">Begin Shopping</a></li>
         <li><a href="listorder.jsp">List All Orders</a></li>
         <li><a href="customer.jsp">My Profile</a></li>
