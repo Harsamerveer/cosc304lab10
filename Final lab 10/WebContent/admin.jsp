@@ -24,6 +24,23 @@
             height: 500px;
             margin: 20px auto;
         }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin: 20px;
+        }
+
+
     </style>
 </head>
 <body>
@@ -154,6 +171,7 @@
         }
     });
 </script>
-
+<!-- Admin Dashboard Button -->
+<a href="index.jsp" class="button">Home Page</a>
 </body>
 </html>
