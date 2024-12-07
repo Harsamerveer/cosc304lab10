@@ -80,7 +80,8 @@ window.onclick = function(event) {
             <button type="submit" class="btn submit">Search</button>
             <!-- Dropdown for Language Selection -->
             
-            <button type="reset" class="btn reset">Reset</button>
+            <button type="reset" class="btn reset"><a href="listprod.jsp">Reset</a></button>
+            
         </form>
 
     </div>
