@@ -49,6 +49,10 @@
 
 <div class="container">
     <nav>
+        <!-- Logo -->
+        <img src="img/logotypemon.png" alt="Mondo Books" class="logo">
+        
+        <!-- Navigation Links -->
         <ul>
             <li><a href="listprod.jsp">Begin Shopping</a></li>
             <li><a href="listorder.jsp">List All Orders</a></li>
@@ -56,21 +60,14 @@
             <li><a href="admin.jsp">Administrators</a></li>
             <li><a href="logout.jsp">Log out</a></li>
         </ul>
-        <button class="btn"> <a href="showcart.jsp">Cart </a></button>
+        
+        <!-- Cart Button -->
+        <button class="btn"><a href="showcart.jsp">Cart</a></button>
+        
+
     </nav>
 
-    <div style="display: flex; justify-content: center; align-items: center; height: 100px; text-align: center;">
-        <%
-        // Display current user login information
-        String userName = (String) session.getAttribute("authenticatedUser");
-        if (userName != null) {
-            out.println("<p style='color: white; font-family: \"Poppins\", sans-serif; font-weight: 100; font-size: 30px;'>Welcome, " + userName + "</p>");
-        }
-        %>
-    </div>
-
-    <nav>
-        <img src="img/logotypemon.png" alt="Mondo Books" class="logo">
+       
         <li>
             <div class="searchform">
                 <form method="get" action="listprod.jsp">
