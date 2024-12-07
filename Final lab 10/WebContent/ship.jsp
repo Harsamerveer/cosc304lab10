@@ -9,7 +9,6 @@
 
 <html>
 <head>
-<title>Ray's Grocery Shipment Processing</title>
 <style>
     body { font-family: Arial, sans-serif; }
     h2, h3 { color: purple; }
